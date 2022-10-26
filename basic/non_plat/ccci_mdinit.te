@@ -181,3 +181,4 @@ allow ccci_mdinit sysfs_boot_mode:file r_file_perms;
 
 get_prop(ccci_mdinit, vendor_mtk_wmt_prop)
 get_prop(ccci_mdinit, vendor_mtk_debug_md_reset_prop)
+get_prop(ccci_mdinit, vendor_mtk_ril_mode_prop)
