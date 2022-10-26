@@ -77,3 +77,6 @@ set_prop(mediacodec, vendor_mtk_wfd_enable_prop)
 
 #allow get mtk_sec_video_path_support
 get_prop(mediacodec, vendor_mtk_sec_video_path_support_prop)
+
+#allow get mtk_vendor_vt
+get_prop(mediacodec, vendor_mtk_vendor_vt_prop)
