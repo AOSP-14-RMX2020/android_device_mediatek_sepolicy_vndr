@@ -408,6 +408,10 @@ allow meta_tst self:tcp_socket { listen accept create_socket_perms_no_ioctl };
 
 allow meta_tst meta_atci_socket:sock_file w_file_perms;
 
+# Purpose for co-tms calibration
+allow meta_tst sysfs_dcxo:file rw_file_perms;
+allow meta_tst proc_clkdbg:file rw_file_perms;
+
 # Date : WK21.40
 # Operation: Android S migration
 # Purpose : Allow  meta_tst to read/write ccci/ccb

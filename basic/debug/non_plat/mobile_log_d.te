@@ -14,6 +14,7 @@ allow mobile_log_d proc_gz_log:file r_file_perms;
 allow mobile_log_d proc_last_kmsg:file r_file_perms;
 allow mobile_log_d proc_bootprof:file r_file_perms;
 allow mobile_log_d proc_pl_lk:file r_file_perms;
+allow mobile_log_d proc_net:file w_file_perms;
 
 #apusys
 allow mobile_log_d proc_apusys_up_seq_logl:file r_file_perms;

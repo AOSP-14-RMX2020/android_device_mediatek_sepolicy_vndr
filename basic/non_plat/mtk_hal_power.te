@@ -293,6 +293,22 @@ allow mtk_hal_power surfaceflinger:file r_file_perms;
 allow mtk_hal_power proc_cpuhvfs:dir r_dir_perms;
 allow mtk_hal_power proc_cpuhvfs:file rw_file_perms;
 
+# allow powerhal to access memory page table scailing
+allow mtk_hal_power proc_min_free_kbytes:dir r_dir_perms;
+allow mtk_hal_power proc_min_free_kbytes:file rw_file_perms;
+
+allow mtk_hal_power sysfs_thp_enabled:dir r_dir_perms;
+allow mtk_hal_power sysfs_thp_enabled:file rw_file_perms;
+
+allow mtk_hal_power sysfs_thp_defrag:dir r_dir_perms;
+allow mtk_hal_power sysfs_thp_defrag:file rw_file_perms;
+
+allow mtk_hal_power sysfs_thp_khp_defrag:dir r_dir_perms;
+allow mtk_hal_power sysfs_thp_khp_defrag:file rw_file_perms;
+
+allow mtk_hal_power sysfs_thp_khp_scan_sleep_millisecs:dir r_dir_perms;
+allow mtk_hal_power sysfs_thp_khp_scan_sleep_millisecs:file rw_file_perms;
+
 # 2021/8/25
 # allow powerhal to access /sys/kernel/cm_mgr/dbg_cm_mgr
 allow mtk_hal_power sysfs_cm_mgr:dir r_dir_perms;
@@ -328,3 +344,14 @@ allow mtk_hal_power input_device:chr_file rw_file_perms;
 
 # Displowpower
 allow mtk_hal_power proc_idletime:file rw_file_perms;
+
+# Date : 2022/12/07
+# allow powerhal to access mtk_perf_ioctl_magt and add permission for MAGT Service
+allow mtk_hal_power sysfs_perfmgr:dir r_dir_perms;
+allow mtk_hal_power sysfs_perfmgr:file rw_file_perms;
+allow mtk_hal_power magt:dir r_dir_perms;
+allow mtk_hal_power magt:file r_file_perms;
+
+# Date: 2023/1/4
+# Purpose: allow permission for "/proc/sys/kernel/sched_pelt_multiplier"
+allow mtk_hal_power proc_sched:file rw_file_perms;

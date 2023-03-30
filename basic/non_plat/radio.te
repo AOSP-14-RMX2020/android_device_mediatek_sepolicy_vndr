@@ -65,3 +65,7 @@ allow radio adb_data_file:file r_file_perms;
 get_prop(radio, vendor_telephony_prop)
 get_prop(radio, vendor_mtk_radio_prop)
 get_prop(radio, vendor_mtk_ril_mode_prop)
+
+# Date : WK16.19
+# Purpose: Allow radio to get vendor_mtk_force_roi_enabled_prop
+get_prop(radio, vendor_mtk_force_roi_enabled_prop)

@@ -498,3 +498,4 @@ allow aee_aedv protect_s_data_file:file r_file_perms;
 allow aee_aedv proc_vpu_memory:file r_file_perms;
 
 allow aee_aedv proc_lockdep:file r_file_perms;
+dontaudit aee_aedv self:capability { sys_ptrace };

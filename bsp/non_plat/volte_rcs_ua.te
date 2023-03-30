@@ -36,3 +36,7 @@ set_prop(volte_rcs_ua, vendor_mtk_service_rcs_prop)
 # Purpose: For volte_rcs_ua to be able to talk to rcs_rild
 allow volte_rcs_ua rcs_rild_socket:sock_file { open getattr read write append };
 allow volte_rcs_ua rild:unix_stream_socket { read getattr connectto };
+
+# Date: W2251
+# Purpose: allow RCS UA to access persist.vendor.multisim.config
+get_prop(volte_rcs_ua, radio_control_prop)

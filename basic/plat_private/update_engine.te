@@ -1,0 +1,4 @@
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+set_prop(update_engine, system_mtk_persist_pllnk_prop)

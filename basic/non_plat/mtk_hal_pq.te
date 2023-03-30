@@ -48,3 +48,6 @@ allow mtk_hal_pq dmabuf_system_heap_device:chr_file r_file_perms;
 allow mtk_hal_pq self:capability sys_nice;
 
 get_prop(mtk_hal_pq, vendor_mtk_aal_ro_prop)
+
+# Purpose : HDR10plus Adaptive feature to query eFuse
+allow mtk_hal_pq sysfs_nvmem:file r_file_perms;

@@ -1,0 +1,25 @@
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+
+allow magt proc_ged:file r_file_perms;
+allowxperm magt proc_ged:file ioctl {
+    GED_BRIDGE_IO_QUERY_INFO
+    GED_BRIDGE_IO_QUERY_GPU_DVFS_INFO
+};
+allow magt proc_perfmgr:dir search;
+allow magt proc_perfmgr:file r_file_perms;
+allowxperm magt proc_perfmgr:file ioctl {
+    PERFMGR_GET_CPU_LOADING
+    PERFMGR_GET_PERF_INDEX
+};
+allow magt sysfs_perfmgr:dir search;
+allow magt sysfs_perfmgr:file r_file_perms;
+allow magt sysfs_fpsgo:dir search;
+allow magt sysfs_fpsgo:file r_file_perms;
+allow magt sysfs_mtk_fpsgo:dir search;
+allow magt sysfs_mtk_fpsgo:file { w_file_perms getattr };
+
+get_prop(magt, vendor_mtk_magt_support_prop)
+
+hal_client_domain(magt, hal_power)

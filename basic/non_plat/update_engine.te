@@ -56,3 +56,9 @@ allow update_engine sysfs_devices_block:dir search;
 allow update_engine postinstall_block_device:dir w_dir_perms;
 allow update_engine postinstall_block_device:lnk_file create_file_perms;
 allow update_engine proc_bootconfig:file r_file_perms;
+allow update_engine sysfs_memory:dir r_dir_perms;
+
+# Data : 2022/03/23
+# Operation : S migration
+# Purpose : In order to suport preloader update that UFS LUN1 is mapped to sdc
+allow update_engine bootdevice_block_device:blk_file rw_file_perms;

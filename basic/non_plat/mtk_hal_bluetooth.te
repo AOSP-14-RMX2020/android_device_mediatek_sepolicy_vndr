@@ -56,6 +56,11 @@ allow mtk_hal_bluetooth proc_btdbg:file rw_file_perms;
 # Purpose: ability to enable bt driver thread as RT priority
 allow mtk_hal_bluetooth kernel:process setsched;
 
+# Date :  2020/11/06
+# Allow socket operating
+allow mtk_hal_bluetooth self:socket { create bind read write setopt getopt shutdown };
+allow mtk_hal_bluetooth self:bluetooth_socket { create bind read write setopt getopt shutdown };
+
 # Date :  2021/04/27
 # Allow ReadDefaultFstab().
 read_fstab(mtk_hal_bluetooth)

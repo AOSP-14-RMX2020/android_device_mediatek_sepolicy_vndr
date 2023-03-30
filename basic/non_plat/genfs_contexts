@@ -44,6 +44,7 @@ genfscon proc /mtk_cmdq_debug/status         u:object_r:proc_cmdq_debug:s0
 genfscon proc /mtk_cmdq_debug/record         u:object_r:proc_cmdq_debug:s0
 genfscon proc /cpuhvfs/dbg_repo              u:object_r:proc_dbg_repo:s0
 genfscon proc /sys/kernel/panic_on_rcu_stall u:object_r:proc_panic_on_rcu_stall:s0
+genfscon proc /sys/kernel/sched_pelt_multiplier u:object_r:proc_sched:s0
 
 genfscon proc /sys/kernel/sched_stune_task_threshold  u:object_r:proc_sched:s0
 genfscon proc /sys/vm/dirty_writeback_centisecs       u:object_r:proc_sched:s0
@@ -156,6 +157,11 @@ genfscon proc /sys/kernel/sched_migration_cost_ns u:object_r:proc_sched_migratio
 # allow powerhal to access /proc/cpuhvfs/cpufreq_cci_mode
 genfscon proc /cpuhvfs/cpufreq_cci_mode u:object_r:proc_cpuhvfs:s0
 
+# Purpose: permission for /proc/sys/vm/min_free_kbytes
+genfscon proc /sys/vm/min_free_kbytes u:object_r:proc_min_free_kbytes:s0
+
+genfscon proc /clkdbg u:object_r:proc_clkdbg:s0
+
 ##########################
 # sysfs files
 #
@@ -185,9 +191,36 @@ genfscon sysfs /devices/platform/mt_charger/power_supply                        
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-gauge/power_supply                  u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/10026000.pwrap/10026000.pwrap:mt6366/mt6358-gauge/power_supply                 u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6359-gauge/power_supply              u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-gauge/power_supply                u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/10026000.pwrap/10026000.pwrap:mt6359p/mt6359p-gauge/power_supply                   u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/11cb1000.i2c/i2c-9/9-0034/11cb1000.i2c:mt6375@34:mt6375_gauge/power_supply/    u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/11e01000.i2c/i2c-1/1-0055/power_supply                                         u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/11e01000.i2c/i2c-1/1-006a/power_supply                                         u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370_pmu_charger/power_supply                          u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_charger/power_supply                         u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370_chg.1.auto/power_supply                           u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370_chg.3.auto/power_supply                           u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger/power_supply                              u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.0.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.1.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.2.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.3.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.4.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.5.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.6.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.7.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_chg.1.auto/power_supply                          u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_chg.3.auto/power_supply                          u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger/power_supply                             u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.0.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.1.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.2.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.3.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.4.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.5.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.6.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.7.auto/power_supply                      u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/11016000.i2c/i2c-5/5-0034/mt6360_pmu_chg.2.auto/power_supply                   u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_chg.2.auto/power_supply                  u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/11e00000.i2c/i2c-7/7-0034/mt6360_chg.1.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/11e00000.i2c/i2c-5/5-0034/mt6360_chg.1.auto/power_supply                       u:object_r:sysfs_batteryinfo:s0
@@ -198,12 +231,20 @@ genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/11e01000.i2c:mt6375@3
 genfscon sysfs /devices/platform/11ed1000.i2c/i2c-5/5-0034/11ed1000.i2c:mt6375@34:mtk_gauge/power_supply/           u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/11ed1000.i2c/i2c-5/5-0034/11ed1000.i2c:mt6375@34:chg/power_supply/                 u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:mtk_gauge/power_supply/       u:object_r:sysfs_batteryinfo:s0
+
+genfscon sysfs /devices/platform/11280000.i2c/i2c-10/10-0055/power_supply/                                          u:object_r:sysfs_batteryinfo:s0
+
 genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:chg/power_supply/             u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:mtk_gauge/power_supply/battery/wakeup39 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:chg/power_supply/11280000.i2c:mt6375@34:chg/wakeup26 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk_gauge/power_supply/           u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:chg/power_supply/                 u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/soc/11017000.i2c/i2c-5/5-0034/11017000.i2c:mt6375@34:chg/power_supply/             u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/11b21000.i2c/i2c-5/5-0034/11b21000.i2c:mt6375@34:mtk_gauge/power_supply/       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/11b21000.i2c/i2c-5/5-0034/11b21000.i2c:mt6375@34:chg/power_supply/             u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/mt6360_chg.3.auto/power_supply                           u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-charger-type-detection/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/1c804000.spmi/spmi-0/0-04/mt6377-gauge/power_supply/                           u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/mt-rtc/rtc                                                                         u:object_r:sysfs_rtc:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6359-pmic/mt6359-rtc/rtc                           u:object_r:sysfs_rtc:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/rtc                           u:object_r:sysfs_rtc:s0
@@ -255,6 +296,8 @@ genfscon sysfs /devices/class/thermal   u:object_r:sysfs_therm:s0
 genfscon sysfs /kernel/thermal u:object_r:sysfs_thermal_sram:s0
 genfscon sysfs /kernel/charger_cooler u:object_r:sysfs_charger_cooler:s0
 
+genfscon sysfs /kernel/clk_buf/ u:object_r:sysfs_dcxo:s0
+
 genfscon sysfs /devices/virtual/switch/fps u:object_r:sysfs_fps:s0
 
 genfscon sysfs /firmware/devicetree/base/chosen/atag,devinfo u:object_r:sysfs_devinfo:s0
@@ -275,6 +318,7 @@ genfscon sysfs /devices/platform/odm/odm:vibrator@0/leds/vibrator              u
 genfscon sysfs /devices/platform/soc/soc:regulator_vibrator/leds/vibrator      u:object_r:sysfs_vibrator:s0
 genfscon sysfs /devices/platform/soc/soc:pwm_leds/leds/lcd-backlight           u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/soc/soc:mtk_leds/leds/lcd-backlight           u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/soc:mtk_leds1/leds/lcd-backlight1         u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/mtk_leds/leds/lcd-backlight                   u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/i2c_leds/leds/lcd-backlight                   u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/regulator_vibrator/leds/vibrator              u:object_r:sysfs_vibrator:s0
@@ -283,7 +327,6 @@ genfscon sysfs /devices/platform/pwmleds/leds                                  u
 genfscon sysfs /devices/platform/disp_leds/leds                                u:object_r:sysfs_leds:s0
 
 genfscon sysfs /devices/platform/11f00000.i2c6/i2c-6/6-0011/leds/lcd-backlight                 u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds	     u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/11017000.i2c/i2c-5/5-0034/mt6370_pmu_rgbled/leds			         u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight                                u:object_r:sysfs_leds:s0
 
@@ -406,6 +449,12 @@ genfscon sysfs /kernel/mm/ksm/pages_sharing  u:object_r:sysfs_pages_sharing:s0
 genfscon sysfs /kernel/mm/ksm/pages_unshared u:object_r:sysfs_pages_unshared:s0
 genfscon sysfs /kernel/mm/ksm/pages_volatile u:object_r:sysfs_pages_volatile:s0
 
+# Purpose : permission for memory page table scailing
+genfscon sysfs /kernel/mm/transparent_hugepage/enabled                         u:object_r:sysfs_thp_enabled:s0
+genfscon sysfs /kernel/mm/transparent_hugepage/defrag                          u:object_r:sysfs_thp_defrag:s0
+genfscon sysfs /kernel/mm/transparent_hugepage/khugepaged/defrag               u:object_r:sysfs_thp_khp_defrag:s0
+genfscon sysfs /kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs u:object_r:sysfs_thp_khp_scan_sleep_millisecs:s0
+
 # Date : 2019/10/25
 # Purpose : /proc/device-tree/chosen/atag,chipid or  /sysfs/firmware/devicetree/base/chosen/atag,chipid
 genfscon sysfs /firmware/devicetree/base/chosen/atag,chipid u:object_r:sysfs_chipid:s0
@@ -447,6 +496,7 @@ genfscon sysfs /kernel/gbe u:object_r:sysfs_gbe:s0
 # Purpose : Allow powerhal to control mali power policy
 genfscon sysfs /class/misc/mali0/device/power_policy u:object_r:sysfs_mali_power_policy:s0
 genfscon sysfs /devices/platform/13000000.mali/power_policy u:object_r:sysfs_mali_power_policy:s0
+genfscon sysfs /devices/platform/soc/13000000.mali/power_policy u:object_r:sysfs_mali_power_policy:s0
 
 # Date : WK20.25
 # Operation: R migration
@@ -537,7 +587,15 @@ genfscon sysfs /power/clk_buf/ u:object_r:sysfs_dcxo:s0
 genfscon proc /apusys_logger/seq_logl u:object_r:proc_apusys_up_seq_logl:s0
 
 # labeling sysfs wakeup files to avoid sepolicy violation
+genfscon sysfs /devices/platform/10238000.gce/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/15004000.ispsys/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6397-rtc/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-004e/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt635x-auxadc/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-charger-type-detection/power_supply/mtk_charger_type/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/wakeup                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt635x-auxadc/wakeup                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-gauge/power_supply/battery/wakeup                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-gauge/power_supply/mtk-gauge/wakeup                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt635x-auxadc/wakeup/wakeup                                        u:object_r:sysfs_wakeup:s0
@@ -555,8 +613,30 @@ genfscon sysfs /devices/platform/10027000.spmi/spmi-0/0-09/10027000.spmi:mt6362@
 genfscon sysfs /devices/platform/10027000.spmi/spmi-0/0-09/10027000.spmi:mt6362@9:tcpc/tcpc/type_c_port0/dual-role-type_c_port0/wakeup      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10027000.spmi/spmi-0/0-09/10027000.spmi:mt6362@9:tcpc/wakeup/wakeup                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10027000.spmi/spmi-0/0-09/wakeup/wakeup                                                                    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370_pmu_charger/power_supply/mt6370_pmu_charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger/power_supply/mt6370-charger/wakeup                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.0.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.1.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.2.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.3.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.4.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.5.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.6.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.7.auto/power_supply/mt6370-charger/wakeup                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_charger/power_supply/mt6370_pmu_charger/wakeup                       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger/power_supply/mt6370-charger/wakeup                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.0.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.1.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.2.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.3.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.4.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.5.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.6.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370-charger.7.auto/power_supply/mt6370-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/wakeup/wakeup                                                                    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/wakeup/wakeup                                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-004e/tcpc/type_c_port0/wakeup                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-004e/wakeup/wakeup                                                                    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/wakeup                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-004e/wakeup/wakeup                                                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11201000.mtu3_0/wakeup/wakeup                                                                              u:object_r:sysfs_wakeup:s0
@@ -617,6 +697,79 @@ genfscon sysfs /devices/virtual/usb_rawbulk/pcv/wakeup                          
 genfscon sysfs /devices/virtual/wakeup/wakeup                                                                                               u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1f000000.mdp/wakeup/wakeup2/event_count                                                            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1f000000.mdp/wakeup/wakeup2                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1f000000.mdp/wakeup/                                                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c804000.spmi/spmi-0/0-04/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11201000.usb0/wakeup                                                                                    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11d01000.i2c/i2c-2/2-0010/wakeup                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11d03000.i2c/i2c-4/4-0010/wakeup                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11d05000.i2c/i2c-8/8-001a/wakeup                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11d06000.i2c/i2c-9/9-001a/wakeup                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/wakeup                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0018/wakeup                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c804000.spmi/spmi-0/0-06/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c804000.spmi/spmi-0/0-09/mt6685-rtc/wakeup                                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c804000.spmi/spmi-0/0-09/mt6685-rtc/rtc/rtc0/alarmtimer.0.auto/wakeup                                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:adc/wakeup                                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:auxadc/wakeup                                          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c804000.spmi/spmi-0/0-07/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c804000.spmi/spmi-0/0-05/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1e980000.gce/wakeup                                                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1e990000.gce/wakeup                                                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1f800000.mmlsys_config/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1f000000.mdp/wakeup                                                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10800000.adsp_core0/wakeup                                                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/usb0/wakeup                                                                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11cb0000.i2c3/i2c-3/3-0018/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_chg.2.auto/wakeup                                                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-004e/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/19030000.vpu_core0/wakeup                                                                                    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/19031000.vpu_core1/wakeup                                                                                    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11201000.mtu3_0/wakeup                                                                                       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c804000.spmi/spmi-0/0-04/wakeup                                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/wakeup                                                                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c804000.spmi/spmi-0/0-09/mt6685-rtc/wakeup                                                              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1a000000.camisp_legacy/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c804000.spmi/spmi-0/0-09/mt6685-rtc/rtc/rtc0/alarmtimer.1.auto/wakeup                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/15020000.imgsys_config/wakeup                                                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0018/wakeup                                                                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/18002000.consys/wakeup                                                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:adc/wakeup                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:auxadc/wakeup                                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c804000.spmi/spmi-0/0-05/wakeup                                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:chg/power_supply/11b20000.i2c:mt6375@34:chg/wakeup21        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk_gauge/power_supply/battery/wakeup34                     u:object_r:sysfs_wakeup:s0
+
+# date 2022/04/18 for T0 migration
+genfscon sysfs /devices/platform/10001000.consys/wakeup                                                                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d01000.i2c/i2c-2/2-0010/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d03000.i2c/i2c-4/4-0010/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d03000.i2c/i2c-4/4-001a/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11d05000.i2c/i2c-8/8-001a/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0018/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/11e01000.i2c:mt6375@34:adc/wakeup                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/11e01000.i2c:mt6375@34:auxadc/wakeup                                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/11e01000.i2c:mt6375@34:chg/power_supply/11e01000.i2c:mt6375@34:chg/wakeup        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/11e01000.i2c:mt6375@34:mtk_gauge/power_supply/battery/wakeup                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/11e01000.i2c:mt6375@34:tcpc/tcpc/type_c_port0/wakeup                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c/i2c-5/5-0034/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c015000.spmi/spmi-0/0-04/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c015000.spmi/spmi-0/0-05/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c015000.spmi/spmi-0/0-06/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c015000.spmi/spmi-0/0-07/wakeup                                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c015000.spmi/spmi-0/0-09/mt6685-rtc/rtc/rtc0/alarmtimer.0.auto/wakeup                                     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c015000.spmi/spmi-0/0-09/mt6685-rtc/wakeup                                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1c7b1000.i2c/i2c-15/15-006b/mt6338-auxadc/wakeup                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1e980000.gce/wakeup                                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1e990000.gce/wakeup                                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1f000000.mdp/wakeup                                                                                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1f800000.mmlsys_config/wakeup                                                                              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/charger/power_supply/mtk-mst-div-chg/wakeup                                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/charger/power_supply/mtk-slv-div-chg/wakeup                                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/11211000.usb1/wakeup                                                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1e000000.adspsys/wakeup                                                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/power_supply/mtk-gauge/wakeup                                                                               u:object_r:sysfs_wakeup:s0
+
 
 # allow gpu to set dbg
 genfscon sysfs /disp/dbg1  u:object_r:sysfs_gpu_mtk:s0
@@ -629,12 +782,36 @@ genfscon sysfs /devices/platform/bootdevice/host0/target0:0:0/0:0:0:0/vpd_pg80  
 # Purpose: Add permission for /sys/devices/platform/soc/11270000.ufshci/host0/target0:0:0/0:0:0:0/vpd_pg80
 genfscon sysfs /devices/platform/soc/11270000.ufshci/host0/target0:0:0/0:0:0:0/vpd_pg80  u:object_r:sysfs_vpd:s0
 
+# Purpose: Add permission for /sys/devices/platform/soc/xxxx.ufshci/host0/target0:0:0/0:0:0:x/queue/hw_sector_size
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:0/block/sda/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:0/block/sdb/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:0/block/sdc/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:1/block/sda/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:1/block/sdb/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:1/block/sdc/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:2/block/sda/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:2/block/sdb/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:2/block/sdc/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:0/block/sda/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:0/block/sdb/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:0/block/sdc/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:1/block/sda/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:1/block/sdb/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:1/block/sdc/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:2/block/sda/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:2/block/sdb/queue  u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/112b0000.ufshci/host0/target0:0:0/0:0:0:2/block/sdc/queue  u:object_r:sysfs_devices_block:s0
+
 # RTK Device
 genfscon sysfs /class/extdev_io u:object_r:sysfs_extdev:s0
 
 # 2021/8/25
 # allow powerhal to access /sys/kernel/cm_mgr/dbg_cm_mgr
 genfscon sysfs /kernel/cm_mgr u:object_r:sysfs_cm_mgr:s0
+
+# 2022/12/07
+# Purpose: Allow powerhal to control kernel resources
+genfscon sysfs /module/mtk_perf_ioctl_magt     u:object_r:sysfs_perfmgr:s0
 
 ##########################
 # debugfs files
@@ -668,6 +845,11 @@ genfscon proc /mtk_mdp_debug u:object_r:proc_mtk_mdp_debug:s0
 
 # AudioManager/WiredAccessoryManager, extcon uevents
 genfscon sysfs /devices/platform/14800000.dp_tx/extcon u:object_r:sysfs_extcon:s0
+genfscon sysfs /devices/platform/soc/14800000.dp_tx/extcon u:object_r:sysfs_extcon:s0
+
+# DockObserver needs to read /sys/class/extcon/
+genfscon sysfs /devices/platform/extcon_usb1 u:object_r:sysfs_extcon:s0
+genfscon sysfs /devices/platform/extcon_usb u:object_r:sysfs_extcon:s0
 
 # dumpstate mmcblk access
 genfscon sysfs /devices/platform/soc/11230000.mmc/mmc_host/mmc0 u:object_r:sysfs_devices_block:s0
@@ -711,3 +893,49 @@ genfscon sysfs /devices/platform/1100a000.spi0/spi_master/spi0/spi0.0/authen_fd/
 
 genfscon sysfs /bus/platform/devices/fingerprint/wakeup_enable       u:object_r:sysfs_fp_wakeup:s0
 genfscon sysfs /devices/platform/fingerprint/wakeup_enable           u:object_r:sysfs_fp_wakeup:s0
+
+# Purpose: rules for suspend
+genfscon sysfs /devices/platform/15020000.imgsys_config/wakeup                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1a000000.camsys/wakeup                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10026000.pwrap/10026000.pwrap:mt6359-pmic/mt6359-rtc/wakeup    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-0034/wakeup                              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-0034/mt6360_pmu_chg.3.auto/wakeup        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/mt_charger/wakeup                                              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-004e/wakeup                              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/wakeup136         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/wakeup137         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/wakeup138         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/wakeup139         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/trusty/wakeup                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10026000.pwrap/10026000.pwrap:mt6359-pmic/mt635x-auxadc/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/mtk_lpm/mtk_cpuidle_pm/wakeup                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/wakeup                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_chg.2.auto/wakeup         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-004e/wakeup                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/battery_bq/power_supply/battery/wakeup26                        u:object_r:sysfs_wakeup:s0
+
+# Purpose: rules for nvm to check eFuse segment
+genfscon sysfs /devices/platform/11f10000.efuse/mtk-devinfo0/nvmem                              u:object_r:sysfs_nvmem:s0
+
+#6360leds-6785
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue/brightness u:object_r:sysfs_leds:s0
+#6360leds-6853
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue/trigger u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red/trigger u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green/trigger u:object_r:sysfs_leds:s0
+#6370leds-6781
+
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/red/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/green/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/blue/brightness u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/blue/trigger u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/red/trigger u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/green/trigger u:object_r:sysfs_leds:s0

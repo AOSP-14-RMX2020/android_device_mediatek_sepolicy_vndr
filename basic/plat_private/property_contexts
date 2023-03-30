@@ -78,3 +78,12 @@ vendor.af.audioserver.restart u:object_r:system_mtk_audio_prop:s0
 vendor.debug.sf.log_repaint      u:object_r:system_mtk_sf_debug_prop:s0
 vendor.debug.sf.log_transaction  u:object_r:system_mtk_sf_debug_prop:s0
 vendor.debug.sf.restart          u:object_r:system_mtk_sf_debug_prop:s0
+
+#=============mtk pl_lnk property====================
+persist.vendor.mtk.pl_lnk        u:object_r:system_mtk_persist_pllnk_prop:s0
+vendor.mtk.boot0_linka           u:object_r:system_mtk_persist_pllnk_prop:s0
+vendor.mtk.boot0_linkb           u:object_r:system_mtk_persist_pllnk_prop:s0
+vendor.mtk.boot0_linkc           u:object_r:system_mtk_persist_pllnk_prop:s0
+vendor.mtk.boot1_linka           u:object_r:system_mtk_persist_pllnk_prop:s0
+vendor.mtk.boot1_linkb           u:object_r:system_mtk_persist_pllnk_prop:s0
+vendor.mtk.boot1_linkc           u:object_r:system_mtk_persist_pllnk_prop:s0

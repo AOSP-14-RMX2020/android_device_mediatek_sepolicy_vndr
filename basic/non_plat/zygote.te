@@ -31,3 +31,7 @@ dontaudit zygote self:capability sys_nice;
 # Date : WK22.04
 # Purpose: dontaudit Zygote write system_file when restarting Android
 dontaudit zygote system_file:dir write;
+
+# Date : WK22.30
+# Purpose: Add read permission for app_zygote
+typeattribute zygote_exec mlstrustedobject;

@@ -119,3 +119,9 @@ allow platform_app volte_clientapi_ua:binder { call transfer };
 # Operation : eMBMS Migration
 # Purpose :allow EXPWAY middleware to access the socket
 allow platform_app radio:unix_stream_socket connectto;
+
+# Date: 2022/04/28
+# Operation : gaoyang peng
+# Purpose :[ALPS07117917]allow SystemUI get physical landscape prop 
+# Package: com.android.systemui
+get_prop(platform_app, vendor_mtk_landscape_prop)

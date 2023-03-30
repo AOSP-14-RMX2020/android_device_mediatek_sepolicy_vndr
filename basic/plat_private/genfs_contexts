@@ -30,4 +30,3 @@ genfscon sysfs /bus/platform/drivers/pmic-codec-accdet/state u:object_r:sysfs_he
 # Purpose : vbus voltage
 genfscon sysfs /devices/platform/charger/ADC_Charger_Voltage u:object_r:sysfs_vbus:s0
 genfscon sysfs /devices/platform/battery/ADC_Charger_Voltage u:object_r:sysfs_vbus:s0
-

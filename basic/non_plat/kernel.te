@@ -89,3 +89,7 @@ allow kernel self:system module_request;
 
 # Date: WK19.03
 allow kernel expdb_block_device:blk_file rw_file_perms;
+
+# Date: WK22.37
+# fw loader load fireware in kernel thread
+allow kernel same_process_hal_file:file r_file_perms;

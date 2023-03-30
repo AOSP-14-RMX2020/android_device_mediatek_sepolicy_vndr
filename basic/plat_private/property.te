@@ -35,6 +35,7 @@ system_internal_prop(system_mtk_wifisa_log_prop)
 system_internal_prop(system_mtk_rcs_single_reg_support_prop)
 system_internal_prop(system_mtk_sf_debug_prop)
 system_internal_prop(system_mtk_pco_prop)
+system_internal_prop(system_mtk_persist_pllnk_prop)
 
 # Properties which can't be written outside system
 system_restricted_prop(system_mtk_amslog_prop)
@@ -63,3 +64,4 @@ typeattribute system_mtk_vendor_bluetooth_prop      extended_core_property_type;
 typeattribute system_mtk_rcs_single_reg_support_prop extended_core_property_type;
 typeattribute system_mtk_sf_debug_prop              extended_core_property_type;
 typeattribute system_mtk_pco_prop extended_core_property_type;
+typeattribute system_mtk_persist_pllnk_prop extended_core_property_type;

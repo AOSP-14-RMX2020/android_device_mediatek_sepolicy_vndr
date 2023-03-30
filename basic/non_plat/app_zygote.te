@@ -1,0 +1,1 @@
+allow app_zygote zygote_exec:file r_file_perms;

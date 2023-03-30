@@ -100,7 +100,6 @@ vendor_restricted_prop(vendor_mtk_wappush_prop)
 vendor_restricted_prop(vendor_mtk_wfc_prop)
 vendor_restricted_prop(vendor_mtk_wfc_support_prop)
 vendor_restricted_prop(vendor_mtk_wfd_support_prop)
-vendor_restricted_prop(vendor_mtk_em_dy_debug_ctrl_prop)
 vendor_restricted_prop(vendor_mtk_hvolte_indicator)
 vendor_restricted_prop(vendor_mtk_md_c2k_cap_dep_check_prop)
 vendor_restricted_prop(vendor_mtk_gwsd_capability_prop)
@@ -203,7 +202,6 @@ typeattribute vendor_mtk_wappush_prop                 mtk_core_property_type;
 typeattribute vendor_mtk_wfc_prop                     mtk_core_property_type;
 typeattribute vendor_mtk_wfc_support_prop             mtk_core_property_type;
 typeattribute vendor_mtk_wfd_support_prop             mtk_core_property_type;
-typeattribute vendor_mtk_em_dy_debug_ctrl_prop        mtk_core_property_type;
 typeattribute vendor_mtk_hvolte_indicator             mtk_core_property_type;
 typeattribute vendor_mtk_md_c2k_cap_dep_check_prop    mtk_core_property_type;
 typeattribute vendor_mtk_gwsd_capability_prop         mtk_core_property_type;

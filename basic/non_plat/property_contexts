@@ -26,17 +26,18 @@ vendor.ril.mux.report.case u:object_r:vendor_mtk_ril_mux_report_case_prop:s0
 vendor.ril.cdma.report     u:object_r:vendor_mtk_ril_cdma_report_prop:s0
 
 # dynamic telephony switch
-ro.boot.opt_md2_support    u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.boot.opt_md5_support    u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.boot.opt_sim_count      u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.boot.opt_using_default  u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_c2k_lte_mode u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_c2k_support  u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_eccci_c2k    u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_lte_support  u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_md1_support  u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_md3_support  u:object_r:vendor_mtk_tel_switch_prop:s0
-ro.vendor.mtk_ps1_rat      u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.boot.opt_md2_support       u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.boot.opt_md5_support       u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.boot.opt_sim_count         u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.boot.opt_using_default     u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_c2k_lte_mode    u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_c2k_support     u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_eccci_c2k       u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_lte_support     u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_md1_support     u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_md3_support     u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_ps1_rat         u:object_r:vendor_mtk_tel_switch_prop:s0
+ro.vendor.mtk_tb_wifi_3g_mode u:object_r:vendor_mtk_tel_switch_prop:s0
 
 vendor.gps.clock.type   u:object_r:vendor_mtk_mnld_prop:s0
 ro.logsystem.usertype   u:object_r:vendor_mtk_mnld_prop:s0
@@ -72,6 +73,7 @@ vendor.sms.md.ready	    u:object_r:vendor_mtk_md_prop:s0
 vendor.debug.factory.idle_state u:object_r:vendor_mtk_factory_idle_state_prop:s0
 
 vendor.service.nvram_init u:object_r:vendor_mtk_service_nvram_init_prop:s0
+vendor.service.nvram_restore u:object_r:vendor_mtk_service_nvram_restore_prop:s0
 
 # Camera APP Mode
 vendor.client. u:object_r:vendor_mtk_em_prop:s0
@@ -158,8 +160,17 @@ vendor.debug.sf.latch_unsignaled  u:object_r:vendor_mtk_graphics_hwc_latch_unsig
 vendor.debug.sf.cpupolicy  u:object_r:vendor_mtk_debug_sf_cpupolicy_prop:s0
 vendor.debug.sf.cpupolicy. u:object_r:vendor_mtk_debug_sf_cpupolicy_prop:s0
 
+# sf vendor dynamic duration mode config
+vendor.debug.sf.dynamic_duration. u:object_r:vendor_mtk_debug_sf_duration_prop:s0
+
+# hwc vendor dsi switch config
+ro.vendor.mtk_hwc_dsi_switch u:object_r:vendor_mtk_hwc_dsi_switch_prop:s0
+
 # atm modem mode property(ATM)
 persist.vendor.atm.mdmode u:object_r:vendor_mtk_atm_mdmode_prop:s0
+
+# force roi enable property
+persist.vendor.rcs.force_roi_enabled u:object_r:vendor_mtk_force_roi_enabled_prop:s0
 
 # atm ip address property(ATM)
 persist.vendor.atm.ipaddress u:object_r:vendor_mtk_atm_ipaddr_prop:s0
@@ -324,6 +335,7 @@ ro.vendor.mtk_aod_support u:object_r:vendor_mtk_aod_support_prop:s0
 
 # mtk hwc property
 ro.vendor.composer_version u:object_r:vendor_mtk_default_prop:s0
+vendor.mtk.hwc. u:object_r:vendor_mtk_hwc_prop:s0
 
 #============= mtk sensor property ==============
 ro.vendor.init.sensor.rc u:object_r:vendor_mtk_sensor_prop:s0
@@ -472,3 +484,9 @@ persist.vendor.setWFDInfo.R2             u:object_r:wfd_sys_debug_prop:s0
 # Wi-Fi
 vendor.wlan.firmware.       u:object_r:vendor_wlan_fw_prop:s0
 vendor.wlan.driver.         u:object_r:vendor_wlan_fw_prop:s0
+
+# backlight property
+ro.vendor.mtk_backlight_hwc_support u:object_r:vendor_mtk_backlight_ro_prop:s0
+
+# MAGT support property
+ro.vendor.magt.mtk_magt_support u:object_r:vendor_mtk_magt_support_prop:s0

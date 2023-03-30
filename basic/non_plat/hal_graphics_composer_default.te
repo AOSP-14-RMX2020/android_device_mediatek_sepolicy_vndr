@@ -97,3 +97,32 @@ binder_call(hal_graphics_composer_default, mtk_hal_pq)
 get_prop(hal_graphics_composer_default, vendor_mtk_pq_prop)
 get_prop(hal_graphics_composer_default, vendor_mtk_gpu_prop)
 get_prop(hal_graphics_composer_default, vendor_mtk_mdp_debug_log_prop)
+
+# Date: 2022/2/23
+# Purpose: HWC needs to check platform switch configuraition from project's device-vext.mk
+get_prop(hal_graphics_composer_default, vendor_mtk_hwc_prop)
+
+# Date: 2022/7/12
+# Purpose : HDR10plus Adaptive feature to query eFuse
+allow hal_graphics_composer_default sysfs_nvmem:file r_file_perms;
+
+# Date : WK22.29
+# Operation: Allow HWC read '/sys/class/switch/hdmi/state' to check hdmi init state
+allow hal_graphics_composer_default sysfs_switch:dir {search};
+allow hal_graphics_composer_default sysfs_switch:file r_file_perms;
+
+# Date: 2022/08/17
+# Purpose: HWC needs to check whether dsi switch support or not
+get_prop(hal_graphics_composer_default, vendor_mtk_hwc_dsi_switch_prop)
+
+# Data: 2022/09/19
+# Purpose: Set the ro.vendor.mtk_backlight_hwc_support property
+get_prop(hal_graphics_composer_default, vendor_mtk_backlight_ro_prop)
+
+# Data: 2022/09/19
+# Purpose: access the led device node to adjust the brightness
+allow hal_graphics_composer_default sysfs_leds:file rw_file_perms;
+
+# Data: 2022/09/21
+# Purpose: allow hwcomposer to parse led folder for multi led devices
+allow hal_graphics_composer_default sysfs_leds:dir r_dir_perms;

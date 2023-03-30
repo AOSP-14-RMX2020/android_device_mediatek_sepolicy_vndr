@@ -1,0 +1,1 @@
+allow postinstall mtk_plpath_utils_exec:file rx_file_perms;

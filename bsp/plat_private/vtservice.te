@@ -22,3 +22,6 @@ allow vtservice vtservice_service:service_manager add;
 # Operation: add mdp
 get_prop(vtservice, system_mtk_debug_bq_dump_prop)
 
+# Date: 2022/08/15
+# Operation: get ims vt signal strength
+get_prop(vtservice, system_mtk_ims_vt_signalstrength_prop)

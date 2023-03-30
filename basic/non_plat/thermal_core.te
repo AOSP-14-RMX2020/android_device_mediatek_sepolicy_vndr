@@ -83,3 +83,10 @@ allow thermal_core gsm0710muxd_device:chr_file rw_file_perms;
 # To read connsys node
 allow thermal_core conn_pwr_device:chr_file rw_file_perms_no_map;
 
+# To read efuse node
+allow thermal_core proc_devinfo:dir search;
+allow thermal_core proc_devinfo:file r_file_perms;
+
+#To read hf manager
+allow thermal_core hf_manager_device:chr_file rw_file_perms_no_map;
+

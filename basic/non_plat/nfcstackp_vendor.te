@@ -1,1 +1,2 @@
 type nfcstackp_vendor, domain;
+allow nfcstackp_vendor vendor_nfc_socket_file:sock_file create_file_perms;

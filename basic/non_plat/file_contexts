@@ -21,6 +21,7 @@
 /data/vendor/dumpsys(/.*)?          u:object_r:aee_dumpsys_vendor_file:s0
 /data/extmdl(/.*)?                  u:object_r:mdlog_data_file:s0
 /data/log_temp(/.*)?                u:object_r:logtemp_data_file:s0
+/data/log_wifi_temp(/.*)?           u:object_r:logtemp_data_file:s0
 /data/mdlog(/.*)?                   u:object_r:mdlog_data_file:s0
 /data/mdl(/.*)?                     u:object_r:mdlog_data_file:s0
 /data/mdl3(/.*)?                    u:object_r:mdlog_data_file:s0
@@ -434,6 +435,7 @@
 /dev/ttyCMIPC0         u:object_r:gsm0710muxd_device:s0
 /dev/ttyCMIPC1         u:object_r:gsm0710muxd_device:s0
 /dev/ttyCMIPC2         u:object_r:gsm0710muxd_device:s0
+/dev/ttyCMIPC5         u:object_r:gsm0710muxd_device:s0
 /dev/ttyCMIPC9         u:object_r:gsm0710muxd_device:s0
 /dev/ttyC1     u:object_r:mdlog_device:s0
 /dev/ttyC2     u:object_r:agps_device:s0

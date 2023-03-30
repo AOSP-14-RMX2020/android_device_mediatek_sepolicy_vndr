@@ -16,9 +16,6 @@
 /system/bin/em_svr               u:object_r:em_svr_exec:s0
 /system/bin/lbs_dbg              u:object_r:lbs_dbg_exec:s0
 
-# wifi standalone log
-/data/log_wifi_temp(/.*)? u:object_r:logtemp_data_file:s0
-
 # storagemanager daemon
 # it is used to mount all storages in meta/factory mode
 /system/bin/storagemanagerd u:object_r:vold_exec:s0

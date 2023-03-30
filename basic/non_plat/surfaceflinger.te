@@ -58,6 +58,7 @@ allowxperm surfaceflinger proc_perfmgr:file ioctl {
   PERFMGR_FPSGO_VSYNC
   PERFMGR_XGFFRAME_START
   PERFMGR_XGFFRAME_END
+  PERFMGR_XGFFRAME_MIN_CAP
 };
 
 # Date : WK17.43
@@ -107,3 +108,11 @@ get_prop(surfaceflinger, vendor_render_prop)
 get_prop(surfaceflinger, vendor_mtk_pq_prop)
 get_prop(surfaceflinger, vendor_mtk_gpu_prop)
 get_prop(surfaceflinger, vendor_mtk_mdp_debug_log_prop)
+
+# Data: 2021/01/11
+# Purpose: adjust the dynamic duration mode config
+get_prop(surfaceflinger, vendor_mtk_debug_sf_duration_prop)
+
+# Data: 2022/08/09
+# Purpose: allow to check hwc dsi switch support
+get_prop(surfaceflinger, vendor_mtk_hwc_dsi_switch_prop)

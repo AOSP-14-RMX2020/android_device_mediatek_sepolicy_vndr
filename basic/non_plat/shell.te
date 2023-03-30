@@ -15,3 +15,15 @@ hal_client_domain(shell, hal_power)
 userdebug_or_eng(`
     get_prop(shell, vendor_mtk_debug_sf_cpupolicy_prop);
 ')
+
+# Data: 2022/01/11
+# Purpose: adjust the dynamic duration config
+userdebug_or_eng(`
+    get_prop(shell, vendor_mtk_debug_sf_duration_prop);
+')
+
+# Data: 2022/08/09
+# Purpose: allow to check hwc dsi switch support
+userdebug_or_eng(`
+    get_prop(shell, vendor_mtk_hwc_dsi_switch_prop);
+')

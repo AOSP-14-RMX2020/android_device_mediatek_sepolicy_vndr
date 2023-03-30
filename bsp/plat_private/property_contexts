@@ -171,3 +171,6 @@ persist.vendor.fd.screen.off.only   u:object_r:system_mtk_fd_prop:s0
 
 #allow entitlement to set vonr debug
 persist.vendor.dbg.vonr_ui_ovr u:object_r:system_mtk_dbg_ims_prop:s0
+
+# imsvt signale strength
+vendor.ims.vt.signalstrength. u:object_r:system_mtk_ims_vt_signalstrength_prop:s0

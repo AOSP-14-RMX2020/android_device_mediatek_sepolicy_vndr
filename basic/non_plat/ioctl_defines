@@ -85,6 +85,11 @@ define(`EAS_GET_THERMAL_HEADROOM_INTERVAL_SET', `0x6713')
 # perf_ioctl.h : XGFF
 define(`PERFMGR_XGFFRAME_START', `0x6701')
 define(`PERFMGR_XGFFRAME_END', `0x6702')
+define(`PERFMGR_XGFFRAME_MIN_CAP', `0x6703')
+
+# perf_ioctl_magt.h : MAGT
+define(`PERFMGR_GET_CPU_LOADING', `0x7200')
+define(`PERFMGR_GET_PERF_INDEX', `0x7201')
 
 ##########################
 #

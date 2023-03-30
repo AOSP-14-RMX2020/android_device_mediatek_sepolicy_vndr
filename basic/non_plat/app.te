@@ -58,3 +58,17 @@ allow { appdomain -isolated_app } mtk_safe_hwservice_manager_type:hwservice_mana
 # Operation: addwindow
 # Purpose: Get the variable value of touch report rate
 get_prop(appdomain, vendor_mtk_input_report_rate_prop)
+
+# Date: 2022/11/02
+# Purpose :allow appdomain to get vendor_mtk_soc_prop
+get_prop(appdomain, vendor_mtk_soc_prop)
+
+# Date: 2022/12/07
+# Purpose :allow appdomain to get vendor_mtk_magt_support_prop
+get_prop(appdomain, vendor_mtk_magt_support_prop)
+
+# Date : 2022/01/27
+# Operation: gsensor calibration
+# Purpose: gsensor calibration
+allow sensorhub_app hf_manager_device:chr_file rw_file_perms;
+allow horcali_app hf_manager_device:chr_file rw_file_perms;

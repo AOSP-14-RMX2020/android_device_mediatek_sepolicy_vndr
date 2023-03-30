@@ -13,3 +13,6 @@ get_prop(vpud_native, vendor_mtk_sec_video_path_support_prop)
 # Purpose :allow to access vendor_mtk_*_tee_prop
 get_prop(vpud_native, vendor_mtk_trustonic_tee_prop)
 get_prop(vpud_native, vendor_mtk_microtrust_tee_prop)
+
+# Allow widevine hidl process access widevine kernel driver
+allow vpud_native widevine_drv_device:chr_file rw_file_perms_no_map;

@@ -43,6 +43,7 @@ vendor_restricted_prop(vendor_mtk_atci_prop)
 vendor_restricted_prop(vendor_mtk_atm_ipaddr_prop)
 vendor_restricted_prop(vendor_mtk_atm_mdmode_prop)
 vendor_restricted_prop(vendor_mtk_audio_prop)
+vendor_restricted_prop(vendor_mtk_force_roi_enabled_prop)
 vendor_restricted_prop(vendor_mtk_audiohal_prop)
 vendor_restricted_prop(vendor_mtk_bt_sap_enable_prop)
 vendor_restricted_prop(vendor_mtk_coredump_prop)
@@ -93,6 +94,7 @@ vendor_restricted_prop(vendor_mtk_ril_ipo_prop)
 vendor_restricted_prop(vendor_mtk_ril_mode_prop)
 vendor_restricted_prop(vendor_mtk_ril_mux_report_case_prop)
 vendor_restricted_prop(vendor_mtk_service_nvram_init_prop)
+vendor_restricted_prop(vendor_mtk_service_nvram_restore_prop)
 vendor_restricted_prop(vendor_mtk_simswitch_emmode_prop)
 vendor_restricted_prop(vendor_mtk_smsformat_prop)
 vendor_restricted_prop(vendor_mtk_ss_vendor_prop)
@@ -144,6 +146,12 @@ vendor_restricted_prop(vendor_wlan_fw_prop)
 vendor_restricted_prop(vendor_telephony_prop)
 vendor_restricted_prop(vendor_render_prop)
 vendor_restricted_prop(vendor_net_dn_prop)
+vendor_restricted_prop(vendor_mtk_em_dy_debug_ctrl_prop)
+vendor_restricted_prop(vendor_mtk_debug_sf_duration_prop)
+vendor_restricted_prop(vendor_mtk_hwc_dsi_switch_prop)
+vendor_restricted_prop(vendor_mtk_hwc_prop)
+vendor_restricted_prop(vendor_mtk_backlight_ro_prop)
+vendor_restricted_prop(vendor_mtk_magt_support_prop)
 
 # Properties with can be read by all domains
 typeattribute vendor_mtk_aal_ro_prop                 mtk_core_property_type;
@@ -194,6 +202,7 @@ typeattribute vendor_mtk_ril_ipo_prop                mtk_core_property_type;
 typeattribute vendor_mtk_ril_mode_prop               mtk_core_property_type;
 typeattribute vendor_mtk_ril_mux_report_case_prop    mtk_core_property_type;
 typeattribute vendor_mtk_service_nvram_init_prop     mtk_core_property_type;
+typeattribute vendor_mtk_service_nvram_restore_prop  mtk_core_property_type;
 typeattribute vendor_mtk_simswitch_emmode_prop       mtk_core_property_type;
 typeattribute vendor_mtk_smsformat_prop              mtk_core_property_type;
 typeattribute vendor_mtk_ss_vendor_prop              mtk_core_property_type;
@@ -229,3 +238,4 @@ typeattribute vendor_mtk_omx_core_prop               mtk_core_property_type;
 typeattribute vendor_telephony_prop                  mtk_core_property_type;
 typeattribute vendor_render_prop                     mtk_core_property_type;
 typeattribute vendor_net_dn_prop                     mtk_core_property_type;
+typeattribute vendor_mtk_em_dy_debug_ctrl_prop       mtk_core_property_type;
