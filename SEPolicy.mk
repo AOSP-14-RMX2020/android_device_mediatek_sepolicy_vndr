@@ -4,7 +4,11 @@ MTK_SEPOLICY_PATH := device/mediatek/sepolicy_vndr
 # Build with broken namespaces
 # Userspace blobs are still dependent older props that
 # do not pass the VTS test cases.
-BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+ifeq ($(strip $(TARGET_USING_LEGACY_SELINUX)), true)
+    BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+    BOARD_SEPOLICY_DIRS += \
+        $(MTK_SEPOLICY_PATH)/legacy/non_plat
+endif
 
 BOARD_SEPOLICY_DIRS += \
     $(MTK_SEPOLICY_PATH)/basic/non_plat \

@@ -1,0 +1,2 @@
+allow mtk_hal_power debugfs_fpsgo:dir r_dir_perms;
+allow mtk_hal_power debugfs_fpsgo:file rw_file_perms;

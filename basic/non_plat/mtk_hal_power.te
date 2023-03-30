@@ -161,8 +161,6 @@ allow mtk_hal_power gbe_native:dir r_dir_perms;
 allow mtk_hal_power gbe_native:file r_file_perms;
 allow mtk_hal_power fpsgo_native:dir r_dir_perms;
 allow mtk_hal_power fpsgo_native:file r_file_perms;
-allow mtk_hal_power debugfs_fpsgo:dir r_dir_perms;
-allow mtk_hal_power debugfs_fpsgo:file rw_file_perms;
 
 # Date : 2019/09/17
 # Operation: SQC

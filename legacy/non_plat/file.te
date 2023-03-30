@@ -1,0 +1,2 @@
+# memtrack debugfs file
+type debugfs_gpu_mali, fs_type, debugfs_type;

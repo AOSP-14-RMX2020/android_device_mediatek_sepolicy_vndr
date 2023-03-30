@@ -7,8 +7,6 @@
 # Purpose : For memtrack related service access
 allow hal_memtrack procfs_gpu_img:dir search;
 allow hal_memtrack procfs_gpu_img:file r_file_perms;
-allow hal_memtrack debugfs_gpu_mali:dir search;
-allow hal_memtrack debugfs_gpu_mali:file r_file_perms;
 
 # Date : 2020/06/29
 # Operation: R migration
@@ -28,7 +26,3 @@ allow hal_memtrack proc_gpu_memory:file r_file_perms;
 
 # Purpose: Add permission for access proc/ion/clients/clients_summary
 allow hal_memtrack_default proc_ion_clients_summary:file r_file_perms;
-
-# Purpose: Add permission for access /sys/kernel/debug/ion/clients/clients_summary
-allow hal_memtrack debugfs_ion:dir search;
-allow hal_memtrack_default debugfs_ion:file r_file_perms;

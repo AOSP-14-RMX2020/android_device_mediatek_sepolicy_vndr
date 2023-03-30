@@ -1,0 +1,6 @@
+allow hal_memtrack debugfs_gpu_mali:dir search;
+allow hal_memtrack debugfs_gpu_mali:file r_file_perms;
+
+# Purpose: Add permission for access /sys/kernel/debug/ion/clients/clients_summary
+allow hal_memtrack debugfs_ion:dir search;
+allow hal_memtrack_default debugfs_ion:file r_file_perms;
