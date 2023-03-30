@@ -67,6 +67,18 @@ type mtk_hal_hdmi_hwservice, hwservice_manager_type;
 # BGService HIDL
 type mtk_hal_bgs_hwservice, hwservice_manager_type;
 
+# Configstore
+type hal_configstore_hwservice, hwservice_manager_type;
+
+# BTconfigstore
+type hal_btconfigstore_hwservice, hwservice_manager_type;
+
+# DMS
+type dms_hwservice, hwservice_manager_type;
+
+# NFC
+type nxpnfc_hwservice, hwservice_manager_type;
+
 # Date: 2019/07/04
 # bluetooth audio hidl
 type mtk_hal_bluetooth_audio_hwservice,hwservice_manager_type;

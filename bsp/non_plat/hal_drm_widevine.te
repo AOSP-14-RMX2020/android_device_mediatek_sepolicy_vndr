@@ -27,9 +27,15 @@ allow hal_drm_widevine teei_client_device:chr_file rw_file_perms;
 allow hal_drm_widevine kisd:unix_stream_socket connectto;
 allow hal_drm_widevine sysfs_mmcblk:dir search;
 allow hal_drm_widevine sysfs_mmcblk:file { read open getattr};
+allow hal_drm_widevine sysfs_devices_block:dir search;
+allow hal_drm_widevine sysfs_devices_block:file { read open getattr};
 
 # Allow widevine hidl process access widevine kernel driver
 allow hal_drm_widevine widevine_drv_device:chr_file { getattr open read ioctl write };
 
 # Allow widevine hidl process to read vendor_mtk_soc_prop
 get_prop(hal_drm_widevine, vendor_mtk_soc_prop)
+
+# Allow widevine hidl process to read tee prop
+get_prop(hal_drm_widevine, vendor_mtk_microtrust_tee_prop)
+get_prop(hal_drm_widevine, vendor_mtk_trustonic_tee_prop)

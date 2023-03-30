@@ -59,3 +59,5 @@ r_dir_file(fuelgauged, sysfs_batteryinfo)
 # Purpose: Allow to search /mnt/vendor/nvdata for fstab when using NVM_Init()
 allow fuelgauged mnt_vendor_file:dir search;
 
+# Purpose: Allow for nvram init
+get_prop(fuelgauged, vendor_mtk_service_nvram_init_prop)

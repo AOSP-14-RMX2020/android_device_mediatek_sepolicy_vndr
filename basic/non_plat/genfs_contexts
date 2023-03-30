@@ -45,6 +45,9 @@ genfscon proc /mtk_cmdq_debug/record         u:object_r:proc_cmdq_debug:s0
 genfscon proc /cpuhvfs/dbg_repo              u:object_r:proc_dbg_repo:s0
 genfscon proc /sys/kernel/panic_on_rcu_stall u:object_r:proc_panic_on_rcu_stall:s0
 
+genfscon proc /sys/kernel/sched_stune_task_threshold  u:object_r:proc_sched:s0
+genfscon proc /sys/vm/dirty_writeback_centisecs       u:object_r:proc_sched:s0
+
 # Purpose dump not exit file
 genfscon proc /isp_p2/isp_p2_dump     u:object_r:proc_isp_p2_dump:s0
 genfscon proc /isp_p2/isp_p2_kedump   u:object_r:proc_isp_p2_kedump:s0
@@ -84,6 +87,10 @@ genfscon proc /wlan/status u:object_r:proc_wlan_status:s0
 genfscon sysfs /devices/platform/11015000.i2c9/i2c-9/9-0041/reset_dsp u:object_r:sysfs_reset_dsp:s0
 genfscon sysfs /bus/platform/drivers/smartpainfo/chip_vendor u:object_r:sysfs_chip_vendor:s0
 genfscon sysfs /bus/platform/drivers/smartpainfo/pa_num u:object_r:sysfs_pa_num:s0
+
+genfscon sysfs /bus/platform/drivers        u:object_r:sysfs_bus:s0
+genfscon sysfs /bus/i2c/drivers             u:object_r:sysfs_bus:s0
+genfscon sysfs /bus/usb/drivers/usb         u:object_r:sysfs_bus:s0
 
 # 2019/11/14
 # Purpose: Allow powerhal to control MCDI
@@ -274,7 +281,11 @@ genfscon sysfs /devices/platform/regulator_vibrator/leds/vibrator              u
 genfscon sysfs /devices/platform/leds-mt65xx/leds                              u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/pwmleds/leds                                  u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/disp_leds/leds                                u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11f00000.i2c6/i2c-6/6-0011/leds/lcd-backlight u:object_r:sysfs_leds:s0
+
+genfscon sysfs /devices/platform/11f00000.i2c6/i2c-6/6-0011/leds/lcd-backlight                 u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds	     u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/11017000.i2c/i2c-5/5-0034/mt6370_pmu_rgbled/leds			         u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight                                u:object_r:sysfs_leds:s0
 
 # Date : 2018/11/22
 # Purpose: allow mdlogger to read mdinfo file
@@ -322,6 +333,7 @@ genfscon sysfs /devices/platform/11240000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcb
 genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:0/block/sda                    u:object_r:sysfs_devices_block:s0
 genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:1/block/sdb                    u:object_r:sysfs_devices_block:s0
 genfscon sysfs /devices/platform/11270000.ufshci/host0/target0:0:0/0:0:0:2/block/sdc                    u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/bootdevice/host0/target0:0:0/0:0:0:0/model                             u:object_r:sysfs_devices_block:s0
 
 # Date : 2019/07/12
 # Purpose:dumpstate mmcblk1 access
@@ -449,6 +461,7 @@ genfscon sysfs /devices/platform/bus/180f0000.WIFI/net/wlan0/mtu        u:object
 genfscon sysfs /devices/platform/bus/180f0000.WIFI/net/p2p0/mtu         u:object_r:sysfs_net:s0
 genfscon sysfs /devices/platform/bus/180f0000.wifi/net/wlan0/mtu        u:object_r:sysfs_net:s0
 genfscon sysfs /devices/platform/bus/180f0000.wifi/net/p2p0/mtu         u:object_r:sysfs_net:s0
+genfscon sysfs /devices/platform/CONNAC/net/wlan1                       u:object_r:sysfs_net:s0
 
 # Date : 2020/07/02
 # Purpose : mtk nanohub sensor state detect
@@ -561,6 +574,8 @@ genfscon sysfs /devices/platform/11e01000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/du
 genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_chg.2.auto/wakeup/wakeup                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/wakeup/wakeup                                                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-004e/tcpc/type_c_port0/dual-role-type_c_port0/wakeup                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1101b000.i2c8/i2c-8/8-001d/power_supply/wireless                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1101b000.i2c8/i2c-8/8-001d/power_supply/parallel                                                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/15004000.ispsys/wakeup/wakeup                                                                              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/15020000.imgsys/wakeup/wakeup                                                                              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/battery/power_supply/ac/wakeup                                                                             u:object_r:sysfs_wakeup:s0
@@ -669,3 +684,28 @@ genfscon sysfs /kernel/thunderquake_engine    u:object_r:sysfs_vibrator:s0
 genfscon sysfs /devices/platform/13040000.mali/dma_buf_gpu_mem u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/13040000.mali/kprcs u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/13040000.mali/total_gpu_mem u:object_r:sysfs_gpu:s0
+
+# Purpose : thermal sysfs files
+genfscon sysfs /class/thermal               u:object_r:sysfs_thermal:s0
+
+# Purpose : ion clients_summary
+genfscon proc /ion/clients/clients_summary u:object_r:proc_ion_clients_summary:s0
+
+# Purpose : idletime timer
+genfscon proc /displowpower/idletime    u:object_r:proc_idletime:s0
+
+genfscon sysfs /devices/platform/ts_novatek                    u:object_r:sysfsts_novatek:s0
+genfscon sysfs /devices/platform/mtkfb                         u:object_r:sysfs_mtkfb:s0
+
+genfscon sysfs /bus/platform/devices/fingerprint/clk_enable    u:object_r:sysfs_clk:s0
+genfscon sysfs /devices/platform/fingerprint/clk_enable        u:object_r:sysfs_clk:s0
+
+genfscon sysfs /bus/platform/devices/fingerprint/irq       u:object_r:sysfs_irq:s0
+genfscon sysfs /devices/platform/fingerprint/irq           u:object_r:sysfs_irq:s0
+
+genfscon sysfs /bus/spi/devices/spi0.0/authen_fd/performance                                   u:object_r:sysfs_authen_fd:s0
+genfscon sysfs /bus/spi/devices/goodix_fp/spi0.0/authen_fd/performance                         u:object_r:sysfs_authen_fd:s0
+genfscon sysfs /devices/platform/1100a000.spi0/spi_master/spi0/spi0.0/authen_fd/performance    u:object_r:sysfs_authen_fd:s0
+
+genfscon sysfs /bus/platform/devices/fingerprint/wakeup_enable       u:object_r:sysfs_fp_wakeup:s0
+genfscon sysfs /devices/platform/fingerprint/wakeup_enable           u:object_r:sysfs_fp_wakeup:s0

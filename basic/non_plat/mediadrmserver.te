@@ -7,3 +7,5 @@
 allow mediadrmserver proc_ged:file rw_file_perms;
 
 
+# Purpose: Allow to access audio props
+get_prop(mediadrmserver, vendor_audio_prop)

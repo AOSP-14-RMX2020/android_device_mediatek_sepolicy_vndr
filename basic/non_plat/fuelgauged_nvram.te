@@ -50,7 +50,21 @@ r_dir_file(fuelgauged_nvram, sysfs_batteryinfo)
 # Purpose: Allow to search /mnt/vendor/nvdata for fstab when using NVM_Init()
 allow fuelgauged_nvram mnt_vendor_file:dir search;
 
+# Purpose: mrdump db flow and pre-allocation
+# mrdump db flow
+allow fuelgauged_nvram sysfs_dt_firmware_android:dir { open read search };
+allow fuelgauged_nvram sysfs_dt_firmware_android:file { getattr open read };
+
 allow fuelgauged_nvram sysfs_boot_mode:file r_file_perms;
 
 # Allow ReadDefaultFstab().
 read_fstab(fuelgauged_nvram)
+
+# Purpose: Allow to search metadata files
+allow fuelgauged_nvram metadata_file:dir search;
+
+# GSI
+allow fuelgauged_nvram gsi_metadata_file:dir search;
+
+get_prop(fuelgauged_nvram, vendor_mtk_wmt_prop)
+get_prop(fuelgauged_nvram, vendor_mtk_service_nvram_init_prop)

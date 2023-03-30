@@ -56,3 +56,6 @@ allow crash_dump procfs_blockio:file r_file_perms;
 # Purpose: Allow crash_dump to create/write /sys/kernel/tracing/slog
 allow crash_dump debugfs_tracing_instances:dir create_dir_perms;
 allow crash_dump debugfs_tracing_instances:file create_file_perms;
+
+# Allow crash dump to access HW services prop
+get_prop(crash_dump, hwservicemanager_prop)

@@ -38,3 +38,39 @@ get_prop(platform_app, vendor_mtk_c2_log_prop)
 
 # Allow FMRadio to talk to /dev/fm
 allow platform_app fm_device:chr_file rw_file_perms;
+
+# Render Props
+get_prop(platform_app, exported_default_prop)
+get_prop(platform_app, vendor_render_prop)
+
+allow platform_app sysfs:dir read;
+allow platform_app sysfs_switch:dir search;
+allow platform_app mtk_cmdq_device:chr_file rw_file_perms;
+allow platform_app mtk_mdp_device:chr_file rw_file_perms;
+allow platform_app sysfs_therm:dir r_dir_perms;
+allow platform_app sysfs_therm:file r_file_perms;
+allow platform_app recovery_service:service_manager find;
+
+# Engineermode
+allow platform_app rild:binder { call transfer };
+allow platform_app mtk_hal_rild_hwservice:hwservice_manager find;
+dontaudit platform_app hal_telephony_hwservice:hwservice_manager find;
+get_prop(platform_app, vendor_mtk_default_prop)
+get_prop(platform_app, vendor_mtk_dmc_prop)
+get_prop(platform_app, vendor_mtk_log_tel_dbg_prop)
+get_prop(platform_app, vendor_mtk_mdworldmode_prop)
+get_prop(platform_app, vendor_mtk_ril_mode_prop)
+get_prop(platform_app, vendor_mtk_ril_active_md_prop)
+get_prop(platform_app, vendor_mtk_radio_prop)
+get_prop(platform_app, vendor_mtk_mnld_prop)
+get_prop(platform_app, vendor_mtk_fd_support_prop)
+get_prop(platform_app, vendor_mtk_rat_config_prop)
+get_prop(platform_app, vendor_mtk_ss_vendor_prop)
+get_prop(platform_app, vendor_mtk_telephony_addon_prop)
+get_prop(platform_app, vendor_mtk_tel_switch_prop)
+get_prop(platform_app, vendor_mtk_aal_ro_prop)
+get_prop(platform_app, vendor_mtk_mdm_prop)
+get_prop(platform_app, vendor_mtk_vilte_support_prop)
+get_prop(platform_app, vendor_mtk_wfd_support_prop)
+
+get_prop(platform_app, vendor_mtk_gpu_prop)

@@ -42,6 +42,7 @@ allow mtk_hal_camera fwk_sensor_hwservice:hwservice_manager find;
 allow mtk_hal_camera nvram_data_file:lnk_file create_file_perms;
 allow mtk_hal_camera nvdata_file:lnk_file create_file_perms;
 allow mtk_hal_camera fwk_display_hwservice:hwservice_manager find;
+hal_client_domain(mtk_hal_camera, hal_neuralnetworks)
 hal_client_domain(mtk_hal_camera, hal_graphics_allocator)
 
 # -----------------------------------
@@ -267,6 +268,7 @@ allow mtk_hal_camera cct_data_file:dir create_dir_perms;
 allow mtk_hal_camera cct_data_file:file create_file_perms;
 allow mtk_hal_camera cct_data_file:fifo_file create_file_perms;
 allow mtk_hal_camera sysfs_boot_mode:file r_file_perms;
+allow mtk_hal_camera sysfs_bus:dir r_dir_perms;
 allow mtk_hal_camera mnt_vendor_file:dir create_dir_perms;
 allow mtk_hal_camera mnt_vendor_file:fifo_file create_file_perms;
 
@@ -358,6 +360,7 @@ allow mtk_hal_camera sysfs_concurrency_scenario:file rw_file_perms;
 # Date : 2020/07/10
 # Purpose : allow media sources to access /sys/bus/platform/drivers/emi_ctrl/*
 allow mtk_hal_camera sysfs_emi_ctrl_concurrency_scenario:file rw_file_perms;
+allow mtk_hal_camera sysfs_emi_ctrl_concurrency_scenario:dir r_dir_perms;
 
 # Date : 2020/12/21
 # Operation : To access imgsys daemon driver
@@ -381,3 +384,26 @@ allow mtk_hal_camera hf_manager_device:chr_file rw_file_perms_no_map;
 # Data : 2021/10/27
 # Purpose : DBReleasePlan
 allowxperm mtk_hal_camera vendor_bin_crossbuild_file:file ioctl VT_SENDSIG;
+
+allow mtk_hal_camera persist_data_file:file r_file_perms;
+allow mtk_hal_camera persist_data_file:dir r_dir_perms;
+allow mtk_hal_camera mnt_vendor_file:file r_file_perms;
+allow mtk_hal_camera mnt_vendor_file:dir r_dir_perms;
+allow mtk_hal_camera SUB2AF_device:chr_file rw_file_perms;
+
+set_prop(mtk_hal_camera, vendor_camera_prop)
+set_prop(mtk_hal_camera, vendor_video_prop)
+get_prop(mtk_hal_camera, vendor_render_prop)
+set_prop(mtk_hal_camera, vendor_render_prop)
+get_prop(mtk_hal_camera, vendor_mtk_emcamera_prop)
+
+# Allow to call neuralnetworks hal
+binder_call(mtk_hal_camera, mtk_hal_neuralnetworks)
+
+# PQ
+get_prop(mtk_hal_camera, vendor_mtk_pq_prop)
+
+# Purpose: Add permission for vendor camera files
+allow mtk_hal_camera vendor_camera_data_file:dir rw_dir_perms;
+allow mtk_hal_camera vendor_camera_data_file:file create_file_perms;
+allow mtk_hal_camera vendor_camera_data_file:sock_file write;

@@ -40,3 +40,6 @@ allow gsm0710muxd eemcs_device:chr_file rw_file_perms;
 # Allow read to sys/kernel/ccci/* files
 allow gsm0710muxd sysfs_ccci:dir search;
 allow gsm0710muxd sysfs_ccci:file r_file_perms;
+
+get_prop(gsm0710muxd, vendor_mtk_tel_switch_prop)
+get_prop(gsm0710muxd, vendor_mtk_rat_config_prop)

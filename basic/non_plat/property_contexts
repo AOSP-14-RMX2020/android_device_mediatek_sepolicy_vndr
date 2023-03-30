@@ -39,6 +39,7 @@ ro.vendor.mtk_md3_support  u:object_r:vendor_mtk_tel_switch_prop:s0
 ro.vendor.mtk_ps1_rat      u:object_r:vendor_mtk_tel_switch_prop:s0
 
 vendor.gps.clock.type   u:object_r:vendor_mtk_mnld_prop:s0
+ro.logsystem.usertype   u:object_r:vendor_mtk_mnld_prop:s0
 vendor.gps.gps.version  u:object_r:vendor_mtk_mnld_prop:s0
 vendor.gpsdbglog.enable u:object_r:vendor_mtk_mnld_prop:s0
 vendor.gpsdbglog.       u:object_r:vendor_mtk_mnld_prop:s0
@@ -199,6 +200,7 @@ vendor.debug.pq.                   u:object_r:vendor_mtk_pq_prop:s0
 vendor.sys.pq.                     u:object_r:vendor_mtk_pq_prop:s0
 persist.vendor.sys.isp.            u:object_r:vendor_mtk_pq_prop:s0
 persist.vendor.sys.mtkaal.         u:object_r:vendor_mtk_pq_prop:s0
+vendor.sys.pq.mdp.vp.aispq.        u:object_r:vendor_mtk_pq_prop:s0
 ro.vendor.mtk_pq_color_mode        u:object_r:vendor_mtk_pq_ro_prop:s0
 ro.vendor.mtk_blulight_def_support u:object_r:vendor_mtk_pq_ro_prop:s0
 ro.vendor.mtk_chameleon_support    u:object_r:vendor_mtk_pq_ro_prop:s0
@@ -409,3 +411,64 @@ ro.mtk_deinterlace_support      u:object_r:vendor_mtk_deinterlace_prop:s0
 
 # Power
 vendor.mediatek.powerhal.    u:object_r:vendor_power_prop:s0
+
+#============= allow to set mm-video property================
+vendor.media.target.version                  u:object_r:vendor_video_prop:s0
+vendor.video.disable.ubwc                    u:object_r:vendor_video_prop:s0
+
+# Atcid
+persist.atm_enabled                   u:object_r:persist_atm_prop:s0
+
+# Audio
+vendor.audio.hal.boot.               u:object_r:vendor_audio_prop:s0
+vendor.audio.voice.receiver.         u:object_r:vendor_audio_prop:s0
+vendor.audio.mic.                    u:object_r:vendor_audio_prop:s0
+vendor.audio.chk.                    u:object_r:vendor_audio_prop:s0
+vendor.audio.nfc.                    u:object_r:vendor_audio_prop:s0
+vendor.audio.spkcal.                 u:object_r:vendor_audio_prop:s0
+ro.vendor.qti.va_aosp.               u:object_r:vendor_audio_prop:s0
+
+# BT
+vendor.bt.                           u:object_r:vendor_bt_prop:s0
+persist.vendor.service.bt.           u:object_r:vendor_bt_prop:s0
+
+# Camera
+camera.                               u:object_r:vendor_camera_prop:s0
+cam.egnsavefile.                      u:object_r:vendor_camera_prop:s0
+ro.vendor.camera.                     u:object_r:vendor_camera_prop:s0
+ro.camera.                            u:object_r:vendor_camera_prop:s0
+vendor.camera.                        u:object_r:vendor_camera_prop:s0
+vidhance.                             u:object_r:vendor_camera_prop:s0
+persist.camera.                       u:object_r:vendor_camera_prop:s0
+jpeg.exif.                            u:object_r:vendor_camera_prop:s0
+persist.mtk.venc.                     u:object_r:vendor_video_prop:s0
+persist.tw1.fpc.                      u:object_r:vendor_video_prop:s0
+gce.test                              u:object_r:vendor_video_prop:s0
+vilte.test                            u:object_r:vendor_video_prop:s0
+prepend.test                          u:object_r:vendor_video_prop:s0
+
+# DP lanner
+init.svc.dplanner-2-0            u:object_r:vendor_dpliner_prop:s0
+
+# NFC
+persist.factoryota.                  u:object_r:factor_prop:s0
+
+# RenderThread
+ro.vendor.globalpq.                     u:object_r:vendor_render_prop:s0
+persist.vendor.dp.                      u:object_r:vendor_render_prop:s0
+vendor.dp.                              u:object_r:vendor_render_prop:s0
+ro.vendor.mtk_hdr_video_support         u:object_r:vendor_render_prop:s0
+
+# RIL
+ro.telephony.              u:object_r:vendor_telephony_prop:s0
+
+# Thermal
+sys.thermal.                u:object_r:thermal_engine_prop:s0
+persist.sys.thermal.        u:object_r:thermal_engine_prop:s0
+
+# WFD
+persist.vendor.setWFDInfo.R2             u:object_r:wfd_sys_debug_prop:s0
+
+# Wi-Fi
+vendor.wlan.firmware.       u:object_r:vendor_wlan_fw_prop:s0
+vendor.wlan.driver.         u:object_r:vendor_wlan_fw_prop:s0

@@ -114,6 +114,8 @@ vendor_restricted_prop(vendor_mtk_fast_charging_support_prop)
 vendor_restricted_prop(vendor_mtk_call_drop_prop)
 vendor_restricted_prop(vendor_mtk_mcf_prop)
 vendor_restricted_prop(vendor_mtk_subsidy_lock_support_prop)
+vendor_restricted_prop(vendor_mtk_gwsd_prop)
+vendor_restricted_prop(vendor_mtk_landscape_prop)
 
 # Properties with no restriction
 vendor_public_prop(vendor_mtk_sec_video_path_support_prop)
@@ -214,3 +216,5 @@ typeattribute vendor_mtk_em_mtu_prop                  mtk_core_property_type;
 typeattribute vendor_mtk_fast_charging_support_prop    mtk_core_property_type;
 typeattribute vendor_mtk_sec_video_path_support_prop    mtk_core_property_type;
 typeattribute vendor_mtk_subsidy_lock_support_prop    mtk_core_property_type;
+typeattribute vendor_mtk_gwsd_prop                    mtk_core_property_type;
+typeattribute vendor_mtk_landscape_prop               mtk_core_property_type;

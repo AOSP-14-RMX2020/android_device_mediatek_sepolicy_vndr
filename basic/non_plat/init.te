@@ -147,3 +147,46 @@ allow init sysfs_mtk_core_ctl:dir r_dir_perms;
 allow init sysfs_mtk_core_ctl:file rw_file_perms;
 
 allow init xcap_socket:sock_file create_file_perms;
+
+# Sysfs
+allow init sysfs_leds:file rw_file_perms;
+allow init sysfs_ccci:file r_file_perms;
+allow init sysfs_device_tree_model:file r_file_perms;
+allow init sysfs_devices_block:file create_file_perms;
+
+# Netlink
+allow init self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow init self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_read };
+allow init self:netlink_xfrm_socket { create_socket_perms_no_ioctl nlmsg_read };
+
+# Self
+allow init self:capability2 { block_suspend wake_alarm };
+
+# Dev
+allow init devpts:chr_file { create setattr unlink rw_file_perms };
+allow init socket_device:sock_file create_file_perms;
+allow init gpu_device:chr_file r_file_perms;
+allow init ccci_device:chr_file rw_file_perms;
+allow init persist_block_device:lnk_file relabelto;
+
+# FP
+allow init hal_fingerprint_default:process ptrace;
+
+# VPud
+allow init vpud_native_exec:file execute;
+
+# Toolbox
+allow init toolbox_exec:file execute;
+
+# Ion device \\/dev/ion//
+allow init ion_device:chr_file rw_file_perms;
+
+# MTK Vibrator
+allow init sysfs_vibrator:file r_file_perms;
+
+# Allow init to execute libs
+allow init same_process_hal_file:file execute;
+
+# Allow init permission for hwservice
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init hwservicemanager:binder { call transfer };

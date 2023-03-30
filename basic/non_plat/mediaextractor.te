@@ -15,3 +15,6 @@ allow mediaextractor platform_app:dir search;
 allow mediaextractor platform_app:file r_file_perms;
 
 hal_client_domain(mediaextractor, hal_omx)
+
+# Purpose: Allow to access audio props
+get_prop(mediaextractor, vendor_audio_prop)

@@ -44,3 +44,9 @@ net_domain(vtservice_hidl)
 
 # ViLTE
 allow vtservice_hidl mtkimsmddomain:udp_socket { setopt getattr read write };
+
+# Purpose : Allow radio to read persist.vendor.vilte_support
+get_prop(vtservice_hidl, vendor_mtk_vilte_support_prop)
+
+# Purpose : Allow radio to read persist.vendor.viwifi_support
+get_prop(vtservice_hidl, vendor_mtk_viwifi_support_prop)

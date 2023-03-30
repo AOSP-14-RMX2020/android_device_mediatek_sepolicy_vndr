@@ -18,27 +18,27 @@ net_domain(wfca)
 # Operation : Migration 
 # Purpose : for WFCA send RTP/RTCP
 allow wfca self:capability { net_raw setuid setgid net_admin};
-allow wfca self:udp_socket { create write bind read setopt ioctl getattr shutdown };
-allow wfca node:udp_socket node_bind;
+allow wfca self:udp_socket create_socket_perms_no_ioctl;
+allow wfca node:udp_socket { node_bind create_socket_perms_no_ioctl };
 allow wfca port:udp_socket name_bind;
 allow wfca fwmarkd_socket:sock_file write;
 
 # Date : 2015/03/27
 # Operation : Migration
 # Purpose : for access ccci device
-allow wfca ccci_device:chr_file { read write open ioctl };
+allow wfca ccci_device:chr_file rw_file_perms;
 
 # Purpose : for WakeUpLock
-allow wfca sysfs_wake_lock:file { read write open };
+allow wfca sysfs_wake_lock:file rw_file_perms;
 
 # Purpose : for raw socket
-allow wfca self:rawip_socket { create write bind setopt read getattr};
-allow wfca node:rawip_socket {node_bind}; 
+allow wfca self:rawip_socket create_socket_perms_no_ioctl;
+allow wfca node:rawip_socket { node_bind create_socket_perms_no_ioctl };
 
 # Date : 2015/06/25
 # Purpose : for UA socket pass
 allow wfca volte_ua:fd use;
-allow wfca volte_ua:udp_socket {read write setopt getattr getopt shutdown};
+allow wfca volte_ua:udp_socket create_socket_perms_no_ioctl;
 
 # Purpose : For Ping ICMP feature
 allow wfca self:packet_socket { read create setopt };

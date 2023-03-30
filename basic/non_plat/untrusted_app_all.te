@@ -2,6 +2,18 @@
 # Common SEPolicy Rule
 # ==============================================
 
+get_prop(untrusted_app_all, exported_default_prop)
+get_prop(untrusted_app_all, vendor_render_prop)
+
+# Executing files from an application home directory violates
+# W^X (https://en.wikipedia.org/wiki/W%5EX) constraints (loading executable code
+# from a writable file) and is an unsafe application behavior. Test to see if we
+# can get rid of it.
+auditallow untrusted_app_all app_data_file:file { execute execute_no_trans };
+
+# Untrusted apps are not allowed to use cgroups.
+dontaudit untrusted_app_all cgroup:file *;
+
 # Date: 2020/06/08
 # Purpose: Allow untrusted app to access mtk jpeg
 allow untrusted_app_all proc_mtk_jpeg:file rw_file_perms;
@@ -11,5 +23,32 @@ allowxperm untrusted_app_all proc_mtk_jpeg:file ioctl {
       JPG_BRIDGE_DEC_IO_UNLOCK
 };
 
+allow untrusted_app_all proc_zoneinfo:file r_file_perms;
+allow untrusted_app_all input_device:chr_file getattr;
+allow untrusted_app_all input_device:dir r_dir_perms;
+allow untrusted_app_all mtk_cmdq_device:chr_file rw_file_perms;
+allow untrusted_app_all mtk_mdp_device:chr_file rw_file_perms;
+allow untrusted_app_all sysfs_net:dir r_dir_perms;
+allow untrusted_app_all sysfs_boot_mode:file r_file_perms;
+allow untrusted_app_all proc_misc:file r_file_perms;
+allow untrusted_app_all proc_vmstat:file { getattr map };
 allow untrusted_app_all sysfs_therm:dir r_dir_perms;
 allow untrusted_app_all sysfs_therm:file r_file_perms;
+allow untrusted_app_all cache_file:lnk_file r_file_perms;
+allow untrusted_app_all proc_cpufreq:dir r_dir_perms;
+allow untrusted_app_all proc_mtkcooler:dir r_dir_perms;
+allow untrusted_app_all dalvikcache_data_file:file execute;
+allow untrusted_app_all ashmem_device:chr_file { read getattr ioctl };
+allow untrusted_app_all theme_prop:file { getattr open read map };
+allow untrusted_app_all proc_ppm:dir r_dir_perms;
+allow untrusted_app_all proc_chip:dir r_dir_perms;
+allow untrusted_app_all proc_asound:dir r_dir_perms;
+allow untrusted_app_all proc_cm_mgr:dir r_dir_perms;
+allow untrusted_app_all proc_isp_p2:dir r_dir_perms;
+allow untrusted_app_all proc_thermal:dir r_dir_perms;
+allow untrusted_app_all hal_graphics_allocator_default_tmpfs:file r_file_perms;
+allow untrusted_app_all mtk_hal_mms_hwservice:hwservice_manager find;
+allow untrusted_app_all mtk_hal_mms:binder call;
+allow untrusted_app_all proc_bus_input:file r_file_perms;
+
+get_prop(untrusted_app_all, vendor_mtk_gpu_prop)

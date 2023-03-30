@@ -7,7 +7,6 @@
 type starter_exec , exec_type, file_type, vendor_file_type;
 type charon_exec , exec_type, file_type, vendor_file_type;
 type ipsec_exec , exec_type, file_type, vendor_file_type;
-type stroke_exec , exec_type, file_type, vendor_file_type;
 type ipsec, domain;
 
 net_domain(ipsec)

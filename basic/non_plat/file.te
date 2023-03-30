@@ -12,6 +12,7 @@ type proc_thermal, fs_type, proc_type;
 type proc_mtkcooler, fs_type, proc_type;
 type proc_mtktz, fs_type, proc_type;
 type proc_mtd, fs_type, proc_type;
+type proc_kernel, fs_type, proc_type;
 type proc_slogger, fs_type, proc_type;
 type proc_lk_env, fs_type, proc_type;
 type proc_ged, fs_type, proc_type;
@@ -183,6 +184,8 @@ type sysfs_vcore_debug, fs_type, sysfs_type;
 type sysfs_systracker, fs_type, sysfs_type;
 type sysfs_keypad_file, fs_type, sysfs_type;
 type sysfs_vcp, fs_type, sysfs_type;
+type sysfs_bus, fs_type, sysfs_type;
+type sysfs_clk, fs_type, sysfs_type;
 
 # apusys_queue sysfs file
 type sysfs_apusys_queue, fs_type, sysfs_type;
@@ -432,6 +435,13 @@ type mediaserver_data_file, file_type, data_file_type;
 type mediacodec_data_file, file_type, data_file_type;
 type connsyslog_data_vendor_file, file_type, data_file_type;
 type nfc_data_vendor_file, file_type, data_file_type;
+type firmware_file, file_type, contextmount_type, vendor_file_type;
+type sysfsts_novatek, sysfs_type, fs_type;
+type sysfs_mtkfb, sysfs_type, fs_type;
+type audio_socket, file_type;
+type sysfs_irq, sysfs_type, fs_type;
+type sysfs_authen_fd, sysfs_type, fs_type;
+type sysfs_fp_wakeup, sysfs_type, fs_type;
 
 # AAO
 type data_vendor_aao_file, file_type, data_file_type;
@@ -652,3 +662,12 @@ type proc_dmaheap, fs_type, proc_type;
 # Date: 2021/12/24
 # Purpose: add new label for /proc/mgq
 type proc_mgq, fs_type, proc_type;
+
+# Purpose : ion clients_summary
+type proc_ion_clients_summary, fs_type, proc_type;
+
+# Purpose : idletime timer
+type proc_idletime, fs_type, proc_type;
+
+# Purpose : read vendor camera files
+type vendor_camera_data_file, file_type, data_file_type;

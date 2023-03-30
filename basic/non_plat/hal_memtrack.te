@@ -23,3 +23,6 @@ allow hal_memtrack proc_memory_usage:file r_file_perms;
 # Operation: GPU DDK migration rename proc node
 # Purpose: Add permission for access /proc/mtk_mali/gpu_memory
 allow hal_memtrack proc_gpu_memory:file r_file_perms;
+
+# Purpose: Add permission for access proc/ion/clients/clients_summary
+allow hal_memtrack_default proc_ion_clients_summary:file r_file_perms;

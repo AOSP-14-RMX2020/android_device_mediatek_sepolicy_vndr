@@ -59,6 +59,7 @@ allow mnld merged_hal_service:unix_dgram_socket sendto;
 
 # Purpose : For access system data
 allow mnld block_device:dir search;
+get_prop(mnld, vendor_mtk_mnld_prop);
 set_prop(mnld, vendor_mtk_mnld_prop)
 allow mnld mdlog_device:chr_file rw_file_perms;
 allow mnld self:capability fsetid;
@@ -119,3 +120,20 @@ allow mnld sysfs_leds:file r_file_perms;
 #Add for /nvcfg/almanac.dat
 allow mnld nvcfg_file:dir w_dir_perms;
 allow mnld nvcfg_file:file create_file_perms;
+
+allow mnld proc_cmdline:file r_file_perms;
+allow mnld sysfs_dt_firmware_android:dir r_dir_perms;
+allow mnld sysfs_dt_firmware_android:file r_file_perms;
+
+# Purpose : MTK Lights
+allow mnld sysfs_leds:dir r_dir_perms;
+allow mnld sysfs_leds:file rw_file_perms;
+
+# Connection
+get_prop(mnld, vendor_mtk_wmt_prop)
+get_prop(mnld, vendor_mtk_default_prop)
+get_prop(mnld, vendor_mtk_gps_support_prop)
+get_prop(mnld, vendor_mtk_service_nvram_init_prop)
+
+# GSI
+allow mnld gsi_metadata_file:dir search;

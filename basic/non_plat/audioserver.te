@@ -46,3 +46,6 @@ allow audioserver fuse:file w_file_perms;
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
 allow audioserver proc_ged:file rw_file_perms;
+
+# Operation : Migration
+get_prop(audioserver, vendor_audio_prop)

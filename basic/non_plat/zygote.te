@@ -13,6 +13,8 @@ allow zygote gpu_device:chr_file rw_file_perms;
 
 allow zygote proc_bootprof:file rw_file_perms;
 allow zygote proc_uptime:file rw_file_perms;
+allow zygote system_prop:property_service set;
+get_prop(zygote, vendor_audio_prop)
 
 # Date : WK21.29
 # Purpose: Allow Zygote to unmount labeledfs

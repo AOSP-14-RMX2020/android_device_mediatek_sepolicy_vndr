@@ -99,3 +99,11 @@ allow surfaceflinger hal_graphics_composer_default:file w_file_perms;
 # Data: 2021/12/07
 # Purpose: adjust the cpu policy config
 get_prop(surfaceflinger, vendor_mtk_debug_sf_cpupolicy_prop)
+
+# allows surfaceflinger access render files
+allow surfaceflinger sysfs_boot_mode:file r_file_perms;
+get_prop(surfaceflinger, vendor_render_prop)
+
+get_prop(surfaceflinger, vendor_mtk_pq_prop)
+get_prop(surfaceflinger, vendor_mtk_gpu_prop)
+get_prop(surfaceflinger, vendor_mtk_mdp_debug_log_prop)

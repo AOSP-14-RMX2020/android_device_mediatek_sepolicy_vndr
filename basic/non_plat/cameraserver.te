@@ -42,6 +42,9 @@ allow cameraserver proc_ged:file rw_file_perms;
 allowxperm cameraserver proc_ged:file ioctl proc_ged_ioctls;
 
 # Date : WK17.25
+# Purpose: Allow to access debugfs_ion dir.
+allow cameraserver system_data_file:lnk_file read;
+
 # Operation : Migration
 allow cameraserver debugfs_ion:dir search;
 

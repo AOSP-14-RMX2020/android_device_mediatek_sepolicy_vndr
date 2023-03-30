@@ -18,6 +18,10 @@ init_daemon_domain(mtk_hal_mms)
 # Allow a set of permissions required for a domain to be a server which provides a HAL implementation over HWBinder.
 hal_server_domain(mtk_hal_mms, hal_mtk_mms)
 
+# add/find permission rule to hwservicemanager
+allow mtk_hal_mms mtk_hal_mms_hwservice:hwservice_manager find;
+allow mtk_hal_mms hidl_base_hwservice:hwservice_manager add;
+
 # Purpose : Allow to use kernel driver
 allow mtk_hal_mms graphics_device:chr_file rw_file_perms;
 allow mtk_hal_mms ion_device:chr_file r_file_perms;
@@ -56,5 +60,16 @@ allow mtk_hal_mms platform_app:fd use;
 # Purpose : Allow Miravision to set Sharpness
 allow mtk_hal_mms system_app:fd use;
 
+# Purpose : Allow untrusted apps to use MMS hals
+allow mtk_hal_mms untrusted_app_all:fd use;
+
+# Purpose : Allow MMS hals to read render props
+get_prop(mtk_hal_mms, vendor_render_prop)
+get_prop(mtk_hal_mms, vendor_mtk_pq_prop)
+get_prop(mtk_hal_mms, vendor_mtk_pq_ro_prop)
+
 # Purpose : Allow to set property for AIPQ
 allow mtk_hal_mms apusys_device:chr_file rw_file_perms;
+
+# Boot Mode
+allow mtk_hal_mms sysfs_boot_mode:file r_file_perms;

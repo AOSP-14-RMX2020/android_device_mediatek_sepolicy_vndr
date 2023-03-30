@@ -83,5 +83,9 @@ allow kernel vendor_file:file r_file_perms;
 # Purpose: Allow VOW kthread to write debug PCM dump
 allow kernel mtk_audiohal_data_file:file write;
 
+# Allow kernel to read modules
+allow kernel debugfs_mmc:dir search;
+allow kernel self:system module_request;
+
 # Date: WK19.03
 allow kernel expdb_block_device:blk_file rw_file_perms;

@@ -43,5 +43,23 @@ allowxperm system_app proc_mtk_jpeg:file ioctl {
 allow system_app sysfs_fpsgo:dir search;
 allow system_app sysfs_fpsgo:file r_file_perms;
 
+# CMD hwservice
+allow system_app mtk_cmdq_device:chr_file rw_file_perms;
+allow system_app mtk_mdp_device:chr_file rw_file_perms;
+
+# Zram hwservice
+allow system_app sysfs_zram:dir r_dir_perms;
+allow system_app sysfs_zram:file r_file_perms;
+
+# Battery hwservice
+allow system_app sysfs_boot_mode:file r_file_perms;
+
+# Video render property
+get_prop(system_app, vendor_render_prop)
+get_prop(system_app, vendor_mtk_gpu_prop)
+
 # MTK FM Radio
 allow system_app fm_device:chr_file rw_file_perms;
+
+# HW qemu
+get_prop(system_app, qemu_hw_prop)

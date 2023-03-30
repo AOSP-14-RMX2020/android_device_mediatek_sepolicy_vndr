@@ -309,3 +309,10 @@ hal_client_domain(mediaserver, hal_power)
 allow mediaserver vpud_device:chr_file rw_file_perms;
 
 hal_client_domain(mediaserver, hal_mtkcodecservice)
+
+# to read video props
+get_prop(mediaserver, vendor_video_prop)
+
+# Purpose: Allow to access audio props
+allow mediaserver debugfs_ion:dir search;
+get_prop(mediaserver, vendor_audio_prop)

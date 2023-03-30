@@ -35,6 +35,15 @@ allowxperm bootanim proc_perfmgr:file ioctl {
 allow bootanim gpu_device:dir search;
 
 # Date : WK21.26
+# Purpose : Allow to read gpu props
+get_prop(bootanim, vendor_mtk_gpu_prop)
+
+# Purpose : Allow to read system data
+allow bootanim system_data_file:dir read;
+
+# Allow to read audio props
+get_prop(bootanim, vendor_audio_prop)
+
 # Operation : Migration
 # Purpose : donotaudit data directory search
 dontaudit bootanim system_data_file:dir search;

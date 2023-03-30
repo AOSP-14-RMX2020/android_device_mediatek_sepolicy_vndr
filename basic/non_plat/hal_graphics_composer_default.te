@@ -78,3 +78,22 @@ get_prop(hal_graphics_composer_default, vendor_mtk_display_ro_prop)
 # Purpose: Add permission for simplehwc reading dmabuf_system_secure_heap_device
 allow hal_graphics_composer_default dmabuf_system_secure_heap_device:chr_file r_file_perms_no_map;
 
+# Allow to read video props
+get_prop(hal_graphics_composer_default, vendor_render_prop)
+
+# Allow binder calls
+binder_call(hal_graphics_composer_default, hal_graphics_allocator_default)
+
+# allow hal_graphics_composer_default access hal_graphics_allocator
+hal_client_domain(hal_graphics_composer_default, hal_graphics_allocator);
+
+allow hal_graphics_composer_default {
+    mtk_hal_pq_hwservice
+    hidl_memory_hwservice
+}:hwservice_manager { find };
+
+binder_call(hal_graphics_composer_default, mtk_hal_pq)
+
+get_prop(hal_graphics_composer_default, vendor_mtk_pq_prop)
+get_prop(hal_graphics_composer_default, vendor_mtk_gpu_prop)
+get_prop(hal_graphics_composer_default, vendor_mtk_mdp_debug_log_prop)

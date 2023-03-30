@@ -10,3 +10,22 @@ allowxperm priv_app proc_mtk_jpeg:file ioctl {
       JPG_BRIDGE_DEC_IO_WAIT
       JPG_BRIDGE_DEC_IO_UNLOCK
 };
+
+allow priv_app mtk_cmdq_device:chr_file rw_file_perms;
+allow priv_app mtk_mdp_device:chr_file rw_file_perms;
+allow priv_app proc_interrupts:file { open };
+allow priv_app proc_modules:file { open };
+allow priv_app sysfs_android_usb:file { open };
+allow priv_app sysfs_therm:file r_file_perms;
+allow priv_app sysfs_boot_mode:file r_file_perms;
+allow priv_app vpu_device:chr_file rw_file_perms;
+allow priv_app adb_data_file:dir r_dir_perms;
+allow priv_app adb_data_file:file rx_file_perms;
+
+get_prop(priv_app, exported_default_prop)
+get_prop(priv_app, vendor_render_prop)
+get_prop(priv_app, apexd_prop)
+get_prop(priv_app, vendor_mtk_atci_sys_prop)
+get_prop(priv_app, vendor_mtk_atm_ipaddr_prop)
+get_prop(priv_app, vendor_net_dn_prop)
+get_prop(priv_app, vendor_mtk_gpu_prop)

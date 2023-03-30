@@ -53,3 +53,15 @@ binder_call(radio, mtk_hal_audio)
 # Operation: P migration
 # Purpose: Allow radio to get vendor_mtk_tel_switch_prop
 get_prop(radio, vendor_mtk_tel_switch_prop)
+
+# Purpose : Swift APK integration - access ccci dir/file
+allow radio ccci_fsd:dir r_dir_perms;
+
+allow radio gpuservice:binder call;
+allow radio system_app_data_file:dir getattr;
+allow radio debugfs_ion:dir search;
+allow radio adb_data_file:file r_file_perms;
+
+get_prop(radio, vendor_telephony_prop)
+get_prop(radio, vendor_mtk_radio_prop)
+get_prop(radio, vendor_mtk_ril_mode_prop)

@@ -19,21 +19,44 @@ allow vpud_native proc_mtktz:dir search;
 allow vpud_native proc_mtktz:file rw_file_perms;
 allow vpud_native proc_thermal:file rw_file_perms;
 set_prop(vpud_native, vendor_mtk_thermal_config_prop)
-allowxperm vpud_native proc_m4u:file ioctl MTK_M4U_GZ_SEC_INIT;
-allowxperm vpud_native proc_m4u:file ioctl MTK_M4U_T_SEC_INIT;
 allow vpud_native vcodec_file:file create_file_perms;
 allow vpud_native vcodec_file:dir create_dir_perms;
+allow vpud_native vpud_device:chr_file rw_file_perms;
+allow vpud_native MTK_SMI_device:chr_file rw_file_perms;
 allow vpud_native sysfs_device_tree_model:file r_file_perms;
+allow vpud_native sysfs_emi_ctrl_concurrency_scenario:file rw_file_perms;
+allow vpud_native debugfs_ion:dir r_dir_perms;
+allow vpud_native teei_client_device:chr_file rw_file_perms;
+allow vpud_native mtk_hal_power_hwservice:hwservice_manager find;
+allow vpud_native hwservicemanager:binder call;
+allow vpud_native mtk_hal_power:binder { call transfer };
 
 allow vpud_native gz_device:chr_file rw_file_perms;
 allow vpud_native proc_m4u:file rw_file_perms;
 allow vpud_native tee_device:chr_file rw_file_perms;
 
+allowxperm vpud_native proc_m4u:file ioctl{
+MTK_M4U_T_ALLOC_MVA
+MTK_M4U_T_DEALLOC_MVA
+MTK_M4U_T_CONFIG_PORT
+MTK_M4U_T_DMA_OP
+MTK_M4U_T_SEC_INIT
+MTK_M4U_T_CONFIG_PORT_ARRAY
+MTK_M4U_T_CACHE_SYNC
+MTK_M4U_GZ_SEC_INIT
+};
+
 # call PowerHal
 hal_client_domain(vpud_native, hal_power)
 
+get_prop(vpud_native, hwservicemanager_prop)
+get_prop(vpud_native, vendor_mtk_default_prop)
+set_prop(vpud_native, vendor_video_prop)
+
 allow vpud_native mediaserver:fd use;
 allow vpud_native debugfs_ion:dir search;
+
+allow vpud_native sysfs_boot_mode:file rw_file_perms;
 
 not_full_treble(`
   allow vpud_native shell_exec:file { execute read open execute_no_trans getattr };
@@ -47,6 +70,9 @@ full_treble_only(`
 
 # add power config
 allow vpud_native sysfs_boot_mode:file r_file_perms;
+
+# Mtk video encoder
+get_prop(vpud_native, vendor_mtk_venc_h264_showlog_prop)
 
 allow vpud_native proc_mtkcooler:dir search;
 allow vpud_native proc_mtkcooler:file rw_file_perms;

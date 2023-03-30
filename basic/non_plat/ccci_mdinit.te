@@ -43,8 +43,9 @@ allow ccci_mdinit ccci_device:chr_file rw_file_perms;
 allow ccci_mdinit ccci_monitor_device:chr_file rw_file_perms;
 
 allow ccci_mdinit ccci_ccb_device:chr_file rw_file_perms;
-#=============allow ccci_mdinit to access MD NVRAM==============
 
+#=============allow ccci_mdinit to access MD NVRAM==============
+allow ccci_mdinit nvram_data_file:dir rw_dir_perms;
 allow ccci_mdinit nvram_data_file:file create_file_perms;
 allow ccci_mdinit nvram_data_file:lnk_file r_file_perms;
 allow ccci_mdinit nvdata_file:lnk_file r_file_perms;
@@ -57,6 +58,7 @@ get_prop(ccci_mdinit, vendor_mtk_rat_config_prop)
 allow ccci_mdinit protect_f_data_file:file create_file_perms;
 
 #=============allow ccci_mdinit to property==============
+allow ccci_mdinit protect_s_data_file:dir rw_dir_perms;
 allow ccci_mdinit protect_s_data_file:file create_file_perms;
 allow ccci_mdinit nvram_device:blk_file rw_file_perms;
 allow ccci_mdinit nvdata_device:blk_file rw_file_perms;
@@ -102,7 +104,14 @@ allow ccci_mdinit mnt_vendor_file:dir search;
 # Purpose : Allow ccci_mdinit call sysenv_get and sysenv_set
 allow ccci_mdinit block_device:dir search;
 allow ccci_mdinit proc_cmdline:file r_file_perms;
-allow ccci_mdinit sysfs_dt_firmware_android:dir search;
+allow ccci_mdinit sysfs_dt_firmware_android:dir { open read search };
+allow ccci_mdinit sysfs_dt_firmware_android:file { getattr open read };
+
+get_prop(ccci_mdinit, vendor_mtk_cxp_vendor_prop)
+get_prop(ccci_mdinit, vendor_mtk_service_nvram_init_prop)
+
+# GSI
+allow ccci_mdinit gsi_metadata_file:dir search;
 
 # ==============================================
 # Policy File of /vendor/bin/ccci_fs Executable File
@@ -167,3 +176,8 @@ allow ccci_mdinit proc_version:file r_file_perms;
 allow ccci_mdinit mcf_ota_file:dir { getattr search };
 allow ccci_mdinit mcf_ota_file:file rw_file_perms;
 
+# Purpose : access boot mode
+allow ccci_mdinit sysfs_boot_mode:file r_file_perms;
+
+get_prop(ccci_mdinit, vendor_mtk_wmt_prop)
+get_prop(ccci_mdinit, vendor_mtk_debug_md_reset_prop)

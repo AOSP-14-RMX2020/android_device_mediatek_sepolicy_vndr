@@ -70,6 +70,7 @@ allow mtk_hal_audio fm_device:chr_file rw_file_perms;
 # Operation : Migration
 # Purpose : dump for debug
 set_prop(mtk_hal_audio, vendor_mtk_audiohal_prop)
+get_prop(mtk_hal_audio, vendor_mtk_audiohal_prop)
 
 # Date : WK14.40
 # Operation : Migration
@@ -242,3 +243,24 @@ allow mtk_hal_audio ccci_aud_device:chr_file rw_file_perms;
 # Purpose: Allow Audio HAL to get and set vendor_mtk_audio_prop
 get_prop(mtk_hal_audio, vendor_mtk_audio_prop)
 set_prop(mtk_hal_audio, vendor_mtk_audio_prop)
+allow mtk_hal_audio audioserver:fifo_file w_file_perms;
+allow mtk_hal_audio sysfs_boot_mode:file r_file_perms;
+allow mtk_hal_audio sysfs_dt_firmware_android:dir search;
+
+# Operation: adsp
+allow mtk_hal_audio adsp_device:file rw_file_perms;
+allow mtk_hal_audio adsp_device:chr_file rw_file_perms;
+
+allow mtk_hal_audio debugfs_ion:dir search;
+allow mtk_hal_audio sysfs_dt_firmware_android:dir r_dir_perms;
+allow mtk_hal_audio sysfs_dt_firmware_android:file r_file_perms;
+allow mtk_hal_audio persist_data_file:dir search;
+allow mtk_hal_audio audio_socket:sock_file rw_file_perms;
+allow mtk_hal_audio self:process execmem;
+allow mtk_hal_audio dms_hwservice:hwservice_manager find;
+
+get_prop(mtk_hal_audio, vendor_audio_prop)
+set_prop(mtk_hal_audio, vendor_audio_prop)
+
+get_prop(mtk_hal_audio, vendor_mtk_tel_switch_prop)
+get_prop(mtk_hal_audio, vendor_mtk_default_prop)

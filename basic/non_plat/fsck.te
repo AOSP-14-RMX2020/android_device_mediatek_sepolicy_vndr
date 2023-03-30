@@ -16,3 +16,7 @@ allow fsck oem_block_device:blk_file rw_file_perms;
 # Date : WK17.12
 # Purpose: Fix bootup fail
 allow fsck system_block_device:blk_file getattr;
+allow fsck tmpfs:blk_file getattr;
+
+# Silent rules
+dontaudit fsck self:capability dac_read_search;

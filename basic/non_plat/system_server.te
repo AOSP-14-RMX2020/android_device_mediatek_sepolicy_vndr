@@ -278,3 +278,19 @@ allow system_server proc_mgq:dir search;
 allow system_server mtk_hal_pq:process signal;
 
 hal_client_domain(system_server, hal_mtkcodecservice)
+
+# Camera property
+get_prop(system_server, vendor_camera_prop)
+get_prop(system_server, exported_default_prop)
+
+# ADB data
+allow system_server adb_data_file:dir r_dir_perms;
+allow system_server adb_data_file:file r_file_perms;
+
+# Wi-Fi supplicant
+allow system_server hal_wifi_supplicant_hwservice:hwservice_manager find;
+
+# Zygote
+allow system_server app_zygote:process getpgid;
+
+get_prop(system_server, vendor_mtk_gpu_prop)

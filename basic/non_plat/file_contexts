@@ -44,6 +44,9 @@
 /data/misc/mblog(/.*)?    u:object_r:logmisc_data_file:s0
 /data/vendor/sensor(/.*)? u:object_r:sensor_data_file:s0
 
+# NFC Data Labels
+/dev/nq-nci              u:object_r:nfc_device:s0
+
 # Wallpaper file for smartbook
 /data/system/users/[0-9]+/smartbook_wallpaper  u:object_r:wallpaper_file:s0
 
@@ -488,6 +491,9 @@
 /dev/radio(/.*)?       u:object_r:mtk_radio_device:s0
 /dev/mml_pq     u:object_r:mml_pq_device:s0
 
+# Audio socket
+/dev/socket/audio_hw_socket u:object_r:audio_socket:s0
+
 # Sensor common Devices Start
 /dev/als_ps(/.*)?     u:object_r:als_ps_device:s0
 /dev/barometer(/.*)?  u:object_r:barometer_device:s0
@@ -574,6 +580,51 @@
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/dpm.*                            u:object_r:dpm_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/mcf_ota(_[ab])?                  u:object_r:mcf_ota_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/vcp(_[ab])?                      u:object_r:vcp_device:s0
+
+/dev/block/platform/bootdevice/by-name/proinfo   u:object_r:nvram_device:s0
+/dev/block/platform/bootdevice/by-name/nvram     u:object_r:nvram_device:s0
+/dev/block/platform/bootdevice/by-name/nvdata    u:object_r:nvdata_device:s0
+/dev/block/platform/bootdevice/by-name/frp       u:object_r:frp_block_device:s0
+/dev/block/platform/bootdevice/by-name/expdb     u:object_r:expdb_block_device:s0
+/dev/block/platform/bootdevice/by-name/misc2     u:object_r:misc2_block_device:s0
+/dev/block/platform/bootdevice/by-name/logo      u:object_r:logo_block_device:s0
+/dev/block/platform/bootdevice/by-name/para      u:object_r:para_block_device:s0
+/dev/block/platform/bootdevice/by-name/misc      u:object_r:misc_block_device:s0
+/dev/block/platform/bootdevice/by-name/seccfg    u:object_r:seccfg_block_device:s0
+/dev/block/platform/bootdevice/by-name/secro     u:object_r:secro_block_device:s0
+/dev/block/platform/bootdevice/by-name/userdata  u:object_r:userdata_block_device:s0
+/dev/block/platform/bootdevice/by-name/cache     u:object_r:cache_block_device:s0
+/dev/block/platform/bootdevice/by-name/recovery  u:object_r:recovery_block_device:s0
+/dev/block/platform/bootdevice/by-name/protect1  u:object_r:protect1_block_device:s0
+/dev/block/platform/bootdevice/by-name/protect2  u:object_r:protect2_block_device:s0
+/dev/block/platform/bootdevice/by-name/keystore  u:object_r:keystore_block_device:s0
+/dev/block/platform/bootdevice/by-name/persist   u:object_r:persist_block_device:s0
+/dev/block/platform/bootdevice/by-name/metadata  u:object_r:metadata_block_device:s0
+/dev/block/platform/bootdevice/by-name/nvcfg     u:object_r:nvcfg_block_device:s0
+/dev/block/platform/bootdevice/by-name/sec1      u:object_r:sec1_block_device:s0
+/dev/block/platform/bootdevice/by-name/boot_para u:object_r:boot_para_block_device:s0
+/dev/block/platform/bootdevice/by-name/super     u:object_r:super_block_device:s0
+/dev/block/platform/bootdevice/by-name/cam_vpu[1-3](_[ab])?  u:object_r:cam_vpu_block_device:s0
+/dev/block/platform/bootdevice/by-name/system(_[ab])?        u:object_r:system_block_device:s0
+/dev/block/platform/bootdevice/by-name/boot(_[ab])?          u:object_r:boot_block_device:s0
+/dev/block/platform/bootdevice/by-name/odm(_[ab])?           u:object_r:odm_block_device:s0
+/dev/block/platform/bootdevice/by-name/oem(_[ab])?           u:object_r:oem_block_device:s0
+/dev/block/platform/bootdevice/by-name/vendor(_[ab])?        u:object_r:vendor_block_device:s0
+/dev/block/platform/bootdevice/by-name/lk(_[ab])?            u:object_r:lk_block_device:s0
+/dev/block/platform/bootdevice/by-name/odmdtbo(_[ab])?       u:object_r:dtbo_block_device:s0
+/dev/block/platform/bootdevice/by-name/dtbo(_[ab])?          u:object_r:dtbo_block_device:s0
+/dev/block/platform/bootdevice/by-name/tee([12]|_[ab])       u:object_r:tee_block_device:s0
+/dev/block/platform/bootdevice/by-name/md1img(_[ab])?        u:object_r:md_block_device:s0
+/dev/block/platform/bootdevice/by-name/md1dsp(_[ab])?        u:object_r:dsp_block_device:s0
+/dev/block/platform/bootdevice/by-name/md1arm7(_[ab])?       u:object_r:md_block_device:s0
+/dev/block/platform/bootdevice/by-name/md3img(_[ab])?        u:object_r:md_block_device:s0
+/dev/block/platform/bootdevice/by-name/scp(_[ab])?           u:object_r:scp_block_device:s0
+/dev/block/platform/bootdevice/by-name/sspm(_[ab])?          u:object_r:sspm_block_device:s0
+/dev/block/platform/bootdevice/by-name/spmfw(_[ab])?         u:object_r:spmfw_block_device:s0
+/dev/block/platform/bootdevice/by-name/mcupmfw(_[ab])?       u:object_r:mcupmfw_block_device:s0
+/dev/block/platform/bootdevice/by-name/loader_ext(_[ab])?    u:object_r:loader_ext_block_device:s0
+/dev/block/platform/bootdevice/by-name/vbmeta(_system|_vendor)?(_[ab])?    u:object_r:vbmeta_block_device:s0
+
 # Key manager
 /dev/block/platform/soc/[0-9]+\.mmc/by-name/kb  u:object_r:kb_block_device:s0
 /dev/block/platform/soc/[0-9]+\.mmc/by-name/dkb u:object_r:dkb_block_device:s0
@@ -639,9 +690,13 @@
 
 # MRDUMP
 /dev/block/by-name/mrdump(/.*)? u:object_r:mrdump_device:s0
+/dev/block/platform/bootdevice/by-name/mrdump(/.*)? u:object_r:mrdump_device:s0
 
 /dev/vcu  u:object_r:vcu_device:s0
 /dev/vpud u:object_r:vpud_device:s0
+
+# System files
+/system/bin/netutils-wrapper-1.0         u:object_r:netutils_wrapper_exec_bin:s0
 
 ##########################
 # Vendor files
@@ -692,8 +747,11 @@
 
 /(vendor|system/vendor)/bin/biosensord_nvram                                                u:object_r:biosensord_nvram_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.bluetooth@1\.[0-9]-service-mediatek       u:object_r:mtk_hal_bluetooth_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@2\.0-service-mediatek                u:object_r:mtk_hal_gnss_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@2\.1-service-mediatek                u:object_r:mtk_hal_gnss_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gnss-service\.mediatek                    u:object_r:mtk_hal_gnss_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.audio@4\.0-service-mediatek               u:object_r:mtk_hal_audio_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.audio@5\.0-service-mediatek               u:object_r:mtk_hal_audio_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.audio\.service\.mediatek                  u:object_r:mtk_hal_audio_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mtkpower@1\.0-service            u:object_r:mtk_hal_power_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@1\.0-service-mediatek             u:object_r:mtk_hal_sensors_exec:s0
@@ -706,6 +764,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.lights-service\.mediatek                  u:object_r:mtk_hal_light_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service-mediatek            u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service-mediatek-lazy       u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.mtk\.hardware\.vibrator@1\.2-service                 u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.example                 u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.mediatek                u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/camerahalserver                                              u:object_r:mtk_hal_camera_exec:s0
@@ -717,9 +776,17 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.media\.c2@1\.2-mediatek-64b               u:object_r:mtk_hal_c2_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.memtrack-service\.mediatek                u:object_r:mtk_hal_memtrack_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mtkcodecservice@1\.1-service     u:object_r:hal_mtkcodecservice_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.power@2\.1-service               u:object_r:mtk_hal_power_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.nxp\.hardware\.nfc@1\.0-service		                  u:object_r:vendor_hal_nfc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.nxp\.hardware\.nfc@1\.1-service		                  u:object_r:vendor_hal_nfc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/mfp-daemon                                                   u:object_r:hal_fingerprint_default_exec:s0
+
+/(vendor|system/vendor)/bin/xcap		               u:object_r:xcap_exec:s0
+/(vendor|system/vendor)/bin/ccci_fsd         u:object_r:ccci_fsd_exec:s0
 
 # Google Trusty system files
 /(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@3\.0-service\.trusty u:object_r:hal_keymaster_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@4\.0-service\.trusty u:object_r:hal_keymaster_default_exec:s0
 
 # gpu hal
 /(system\/vendor|vendor)/bin/hw/vendor\.mediatek\.hardware\.gpu@1\.0-service u:object_r:mtk_hal_gpu_exec:s0
@@ -739,6 +806,7 @@
 
 # MMS hal
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mms@1\.[0-9]-service u:object_r:mtk_hal_mms_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mms@1\.[0-9]-service-lazy  u:object_r:mtk_hal_mms_exec:s0
 
 #MMAgent hal
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mmagent@[0-9]+\.[0-9]+-service u:object_r:mtk_hal_mmagent_exec:s0
@@ -746,7 +814,9 @@
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.keymaster_attestation@1\.1-service u:object_r:hal_keymaster_attestation_exec:s0
 
 # ST NFC 1.2 hidl service
+/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.1-service-st                 u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service-st                 u:object_r:hal_nfc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.1-service-st54spi u:object_r:st54spi_hal_secure_element_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.2-service-st54spi u:object_r:st54spi_hal_secure_element_exec:s0
 
 # MTK Wifi Hal
@@ -806,38 +876,153 @@
 # AI feature access vendor/etc/nn file
 /vendor/etc/nn(/.*)? u:object_r:vendor_etc_nn_file:s0
 
-# Data : 2020/12/30
 # Purpose : DBReleasePlan
 /vendor/bin/crossbuild(/.*)? u:object_r:vendor_bin_crossbuild_file:s0
-##########################
-# same-process HAL files and their dependencies
-#
-/vendor/lib(64)?/hw/gralloc\.mt[0-9]+[a-z]*\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/gralloc\.rogue\.so          u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/mt[0-9]+[a-z]*/gralloc\.rogue\.so          u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vulkan\.mt[0-9]+\.so        u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vulkan\.mtk\.so             u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vulkan\.mali\.so            u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vulkan\.mali\.mt[0-9]+\.so  u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/mt[0-9]+/vulkan\.mali\.so   u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/mt[0-9]+/vulkan\.mtk\.so    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgpudataproducer\.so         u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgpudataproducer\.mt[0-9]+\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt[0-9]+\/libgpudataproducer\.so u:object_r:same_process_hal_file:s0
 
-
-/vendor/lib(64)?/libIMGegl\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libglslcompiler\.so     u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libPVRScopeServices\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libsrv_um\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libmpvr\.so             u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libPVRMtkutils\.so      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libusc\.so              u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libtqvalidate\.so       u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libPVROCL\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libufwriter\.so         u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libmemtrack_GL\.so      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libPVRTrace\.so         u:object_r:same_process_hal_file:s0
+###############################################
+# Same-process HAL files and their dependencies
+/vendor/lib/android\.hidl\.base@1\.0\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib/android\.hidl\.manager@1\.0\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib/android\.hardware\.audio\.common-util\.so                            u:object_r:same_process_hal_file:s0
+/vendor/lib/android\.hardware\.audio\.common@4\.0-util\.so                       u:object_r:same_process_hal_file:s0
+/vendor/lib/android\.hardware\.audio\.common@5\.0-util\.so                       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc\.mt[0-9]+[a-z]*\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc\.rogue\.so                                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/mt[0-9]+[a-z]*/gralloc\.rogue\.so                                            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/vulkan\.mt[0-9]+\.so                                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/vulkan\.mtk\.so                                                              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/vulkan\.mali\.so                                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/vulkan\.mali\.mt[0-9]+\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/mt[0-9]+/vulkan\.mali\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/mt[0-9]+/vulkan\.mtk\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgpudataproducer\.so                                                          u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgpudataproducer\.mt[0-9]+\.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+\/libgpudataproducer\.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libIMGegl\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libglslcompiler\.so                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libPVRScopeServices\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libsrv_um\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmpvr\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libusc\.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libtqvalidate\.so                                               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libPVROCL\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libufwriter\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmemtrack_GL\.so                                              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libPVRTrace\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libGLES_mali\.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgpu_aux\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgpud\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libged\.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libdrm\.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libion_ulit\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mtk_cache\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/android\.hardware\.graphics\.mapper@2\.0-impl-2\.1\.so       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.mms@[0-9]\.[0-9]\.so                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libdpframework\.so                                              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libpq_cust_base\.so                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.pq@[0-9]\.[0-9]\.so                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libpq_prot\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libhdrvideo\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libscltm\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libaal_mtk\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.gpu@1\.0.so                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libladder\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libtflite_mtk.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libm4u\.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libneuron_platform.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libion_mtk.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libvpu.so                                                       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libOpenCL\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib/AVCSecureVdecCA\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/jcos_client\.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.ae\.core\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.awb\.core\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.ae\.so                                                        u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.af\.core\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.af\.so                                                        u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.awb\.so                                                       u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.ccudrv\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.ccuif\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.flash\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.gma\.so                                                       u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.lce\.so                                                       u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.log\.so                                                       u:object_r:same_process_hal_file:s0
+/vendor/lib/lib3a\.n3d3a\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib/libBnMtkCodec\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib/libDR\.so                                                            u:object_r:same_process_hal_file:s0
+/vendor/lib/libHEVCdec_sa\.ca7\.android\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib/libJpgEncPipe\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxAdpcmDec\.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxAlacDec\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxApeDec\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxCore\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxG711Dec\.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxGsmDec\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxMp3Dec\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxVdecEx\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkOmxVenc\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib/libMtkSpeechEnh\.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib/lib_iir\.so                                                          u:object_r:same_process_hal_file:s0
+/vendor/lib/lib_smartpa_nxp_ap\.so                                               u:object_r:same_process_hal_file:s0
+/vendor/lib/lib_speech_enh\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib/libaal_cust\.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib/libaalservice\.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib/libaedv\.so                                                          u:object_r:same_process_hal_file:s0
+/vendor/lib/libakm\.so                                                           u:object_r:same_process_hal_file:s0
+/vendor/lib/libalsautils\.so                                                     u:object_r:same_process_hal_file:s0
+/vendor/lib/libarcsoft_dualcam_refocus\.so                                       u:object_r:same_process_hal_file:s0
+/vendor/lib/libaudio_param_parser-vnd\.so                                        u:object_r:same_process_hal_file:s0
+/vendor/lib/libaudiocompensationfilter_vendor\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib/libaudiocompensationfilterc\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.videotelephony@1\.0\.so             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.camera\.atms@1\.0\.so               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/nfc_nci\.nqx\.default\.hw\.so                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libTEECommon\.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libtextclassifier_hash\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmpbase\.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libperfctl_vendor\.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.0\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.1\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.2\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.3\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.4\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.5\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.6\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.7\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.8\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.display\.config@1\.9\.so                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libDefaultFpsActor.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libNoFpsActor.so                                                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libFrameRecord.so                                               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/arm\.graphics-V1-ndk_platform\.so                               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/android\.hardware\.graphics\.mapper@4\.0-impl-mediatek\.so   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgralloc_extra\.so                                            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgralloctypes_mtk\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libgralloc_metadata\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libneuropilot_hal_utils\.so                          u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libapu-apuwarexrp\.mtk\.so               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libapu-apuwareutils\.mtk\.so             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libapu-apuwareapusys\.mtk\.so            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.apuware\.apusys@1.0\.so  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.apuware\.utils@1.0\.so   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.apuware\.xrp@1.0\.so     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libVkLayer_mtk_rt_sdk.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libnir_neon_driver_ndk.mtk.vndk\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libcmdl_ndk.mtk.vndk\.so       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libarmnn_ndk.mtk.vndk\.so      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+[a-z]*/libaiselector\.so              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libaiselector\.so                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libaispq\.so                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.mmagent@[0-9]\.[0-9]\.so                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+[a-z]*/libpq_prot\.so                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+[a-z]*/libpq_cust_base\.so               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+[a-z]*/libdpframework\.so                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/mt[0-9]+[a-z]*/android\.hardware\.graphics\.mapper@4\.0-impl-mediatek\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+[a-z]*/arm\.graphics-ndk_platform\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/arm\.graphics-ndk_platform\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/mt[0-9]+[a-z]*/arm\.graphics-V1-ndk_platform\.so u:object_r:same_process_hal_file:s0
+/vendor/firmware/mali_csffw.bin u:object_r:same_process_hal_file:s0
+/vendor/firmware/valhall-1691526.wa u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libIMGegl\.so           u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libglslcompiler\.so     u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libPVRScopeServices\.so u:object_r:same_process_hal_file:s0
@@ -850,83 +1035,6 @@
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libufwriter\.so         u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libmemtrack_GL\.so      u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libPVRTrace\.so         u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/libGLES_mali\.so u:object_r:same_process_hal_file:s0
-
-/vendor/firmware/valhall-1691526.wa u:object_r:same_process_hal_file:s0
-/vendor/firmware/mali_csffw.bin u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/libgralloc_extra\.so              u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgpu_aux\.so                    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgpud\.so                       u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgralloc_metadata\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgralloctypes_mtk\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libged\.so                        u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/arm\.graphics-V1-ndk_platform\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt[0-9]+[a-z]*/arm\.graphics-V1-ndk_platform\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libdrm\.so                        u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libion_mtk\.so                    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libion_ulit\.so                   u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mtk_cache\.so                     u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/arm\.graphics-ndk_platform\.so    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt[0-9]+[a-z]*/arm\.graphics-ndk_platform\.so    u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/hw/android\.hardware\.graphics\.mapper@2\.0-impl-2\.1\.so     u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/android\.hardware\.graphics\.mapper@4\.0-impl-mediatek\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/mt[0-9]+[a-z]*/android\.hardware\.graphics\.mapper@4\.0-impl-mediatek\.so u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/vendor\.mediatek\.hardware\.mms@[0-9]\.[0-9]\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libdpframework\.so                               u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt[0-9]+[a-z]*/libdpframework\.so                u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libpq_cust\.so                                   u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libpq_cust_base\.so                              u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt[0-9]+[a-z]*/libpq_cust_base\.so               u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor\.mediatek\.hardware\.pq@[0-9]\.[0-9]\.so  u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libpq_prot\.so                                   u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt[0-9]+[a-z]*/libpq_prot\.so                    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhdrvideo\.so                                  u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libscltm\.so                                     u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libaal_mtk\.so                                   u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/vendor\.mediatek\.hardware\.mmagent@[0-9]\.[0-9]\.so                 u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/mt[0-9]+[a-z]*/libaiselector\.so              u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libaiselector\.so                             u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libaispq\.so                                  u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/vendor\.mediatek\.hardware\.gpu@1\.0.so u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/libladder\.so u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/libtflite_mtk.so               u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libnir_neon_driver_ndk.mtk.vndk\.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libcmdl_ndk.mtk.vndk\.so       u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libarmnn_ndk.mtk.vndk\.so      u:object_r:same_process_hal_file:s0
-
-# Date: 2018/07/06
-# Purpose for same-process HAL files and their dependencies: libGLES_mali.so need libm4u.so on mali GPU.
-/vendor/lib(64)?/libm4u\.so u:object_r:same_process_hal_file:s0
-
-# Date: 2018/12/04
-# Purpose: Neuron runtime API and the dependencies
-/vendor/lib(64)?/libneuron_platform.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libion_mtk.so         u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mtk_cache.so          u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libvpu.so             u:object_r:same_process_hal_file:s0
-
-# Date: 2019/01/21
-# Purpose: OpenCL feature requirments
-/vendor/lib(64)?/libOpenCL\.so u:object_r:same_process_hal_file:s0
-
-# Date: 2019/09/05
-# Purpose: GiFT related libraries
-/vendor/lib(64)?/libDefaultFpsActor.so u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libNoFpsActor.so      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libFrameRecord.so     u:object_r:same_process_hal_file:s0
-
-# Date: 2021/07/26
-# Purpose: RayTracing related libraries
-/vendor/lib(64)?/libVkLayer_mtk_rt_sdk.so u:object_r:same_process_hal_file:s0
 
 ##########################
 # Others
@@ -991,3 +1099,6 @@
 
 # Memtrack
 /(vendor|system/vendor)/bin/hw/android\.hardware\.memtrack-service\.mediatek-mali         u:object_r:hal_memtrack_default_exec:s0
+
+# Purpose: Add permission for vendor camera files
+/data/vendor/camera(/.*)?              u:object_r:vendor_camera_data_file:s0

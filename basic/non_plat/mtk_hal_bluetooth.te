@@ -44,6 +44,7 @@ allow mtk_hal_bluetooth mnt_vendor_file:dir search;
 
 # Purpose: Allow BT Driver to insmod
 set_prop(mtk_hal_bluetooth, vendor_mtk_wmt_prop)
+get_prop(mtk_hal_bluetooth, vendor_mtk_wmt_prop)
 
 # Date :  2019/10/30
 # Operation : get bt fw branch info, set to property for eng mode
@@ -59,3 +60,9 @@ allow mtk_hal_bluetooth kernel:process setsched;
 # Allow ReadDefaultFstab().
 read_fstab(mtk_hal_bluetooth)
 
+# Purpose: Allow to search metadata files
+allow mtk_hal_bluetooth metadata_file:dir search;
+allow mtk_hal_bluetooth gsi_metadata_file:dir search;
+
+# Purpose: Allow nvram props
+get_prop(mtk_hal_bluetooth, vendor_mtk_service_nvram_init_prop)

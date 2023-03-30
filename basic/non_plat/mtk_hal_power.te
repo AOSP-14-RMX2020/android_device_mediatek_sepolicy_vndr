@@ -315,3 +315,14 @@ allow mtk_hal_power sysfs_dvfsrc_dbg:file rw_file_perms;
 # allow powerhal to access /proc/mgq
 allow mtk_hal_power proc_mgq:dir r_dir_perms;
 allow mtk_hal_power proc_mgq:file w_file_perms;
+
+# Purpose : Add vpud_native permission
+allow mtk_hal_power init:dir { getattr search };
+allow mtk_hal_power init:file { open read };
+
+# DT2W
+allow mtk_hal_power input_device:dir rw_dir_perms;
+allow mtk_hal_power input_device:chr_file rw_file_perms;
+
+# Displowpower
+allow mtk_hal_power proc_idletime:file rw_file_perms;

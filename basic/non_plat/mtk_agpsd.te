@@ -61,8 +61,18 @@ allow mtk_agpsd merged_hal_service:unix_dgram_socket sendto;
 # Allow send socket to fusion rild
 allow mtk_agpsd rild:unix_dgram_socket sendto;
 
+# Allow system suspend to read the property of hwservicemanager
+allow mtk_agpsd system_suspend_hwservice:hwservice_manager find;
+
 # Read the property of vendor.debug.gps.mnld.ne
 get_prop(mtk_agpsd, vendor_mtk_mnld_prop)
 
 # Read the property of ro.vendor.mtk_log_hide_gps
 get_prop(mtk_agpsd, vendor_mtk_gps_support_prop)
+
+# Read the property of defaulf mtk props
+get_prop(mtk_agpsd, vendor_mtk_default_prop)
+
+# Read the property of mtk ril props
+get_prop(mtk_agpsd, vendor_mtk_md_prop)
+get_prop(mtk_agpsd, vendor_mtk_ril_mode_prop)

@@ -30,6 +30,7 @@ dontaudit vold nvdata_file:dir r_dir_perms;
 dontaudit vold nvcfg_file:dir r_dir_perms;
 dontaudit vold protect_f_data_file:dir r_dir_perms;
 dontaudit vold protect_s_data_file:dir r_dir_perms;
+dontaudit vold persist_data_file:dir r_dir_perms;
 
 # execute mke2fs when format as internal
 allow vold cache_block_device:blk_file getattr;
@@ -42,6 +43,7 @@ allow vold proc_swaps:file r_file_perms;
 allow vold protect1_block_device:blk_file getattr;
 allow vold protect2_block_device:blk_file getattr;
 allow vold swap_block_device:blk_file getattr;
+allow vold sysfs_devices_block:file write;
 
 # trigger udisk uevent
 allow vold sysfs_usb_nonplat:file w_file_perms;
