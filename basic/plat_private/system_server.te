@@ -11,6 +11,10 @@ allow system_server ota_package_file:dir getattr;
 allow system_server crash_dump:fifo_file w_file_perms;
 allow system_server crash_dump:fd use;
 
+# Date :2022/08/22
+# Operation : add system server change dalvik for background dex2oat set cpu_set
+set_prop(system_server, system_mtk_dalvik_prop)
+
 # Property service.
 set_prop(system_server, ctl_bootanim_prop)
 

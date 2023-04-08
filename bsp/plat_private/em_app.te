@@ -262,3 +262,6 @@ get_prop(em_app, system_mtk_vodata_prop)
 # Purpose: Allow EM to access shared preference data
 allow em_app em_app_data_file:dir create_dir_perms;
 allow em_app em_app_data_file:file create_file_perms;
+
+# Purpose: Allow EM to read system_mtk_dmc_prop
+get_prop(em_app, system_mtk_dmc_prop)

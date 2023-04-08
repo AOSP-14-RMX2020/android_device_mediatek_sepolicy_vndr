@@ -116,3 +116,12 @@ add_service(system_app, teei_ifaa_service)
 
 hal_client_domain(system_app, hal_teei_ifaa)
 hal_client_domain(system_app, hal_teei_wechat)
+
+# Date : 2022/05/19
+# Operation : Migration
+# Purpose : Allow VoiceCommand app to get hidl service
+hal_client_domain(system_app, hal_audio)
+
+# DMC : 2022/06/20
+# Purpose : allow to setprop system_mtk_dmc_prop
+get_prop(system_app, system_mtk_dmc_prop)

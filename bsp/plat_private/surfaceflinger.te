@@ -39,3 +39,8 @@ set_prop(surfaceflinger, system_mtk_graphics_sf_gll_prop)
 # Operation: Mediatek BufferQueue Debug
 # Purpose: Allow surfaceflinger getprop debug options for BufferQueue
 get_prop(surfaceflinger, system_mtk_debug_bq_prop)
+
+# Date : WK23.06
+# Operation : Porting
+# Purpose: Allow to set repaint format
+get_prop(surfaceflinger, system_mtk_sf_config_prop)

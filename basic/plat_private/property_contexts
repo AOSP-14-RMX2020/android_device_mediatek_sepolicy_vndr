@@ -78,6 +78,7 @@ vendor.af.audioserver.restart u:object_r:system_mtk_audio_prop:s0
 vendor.debug.sf.log_repaint      u:object_r:system_mtk_sf_debug_prop:s0
 vendor.debug.sf.log_transaction  u:object_r:system_mtk_sf_debug_prop:s0
 vendor.debug.sf.restart          u:object_r:system_mtk_sf_debug_prop:s0
+vendor.sf.hwc_repaint_fmt        u:object_r:system_mtk_sf_config_prop:s0
 
 #=============mtk pl_lnk property====================
 persist.vendor.mtk.pl_lnk        u:object_r:system_mtk_persist_pllnk_prop:s0

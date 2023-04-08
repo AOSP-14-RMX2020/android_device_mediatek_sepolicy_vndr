@@ -171,6 +171,21 @@ persist.vendor.fd.screen.off.only   u:object_r:system_mtk_fd_prop:s0
 
 #allow entitlement to set vonr debug
 persist.vendor.dbg.vonr_ui_ovr u:object_r:system_mtk_dbg_ims_prop:s0
+persist.vendor.dbg.vodata_avail_ovr u:object_r:system_mtk_dbg_ims_prop:s0
 
 # imsvt signale strength
 vendor.ims.vt.signalstrength. u:object_r:system_mtk_ims_vt_signalstrength_prop:s0
+
+# call settings property
+persist.vendor.video.ss_dbg u:object_r:system_mtk_dbg_video_ss_prop:s0
+
+# dalvik
+dalvik.vm.background-dex2oat-threads u:object_r:system_mtk_dalvik_prop:s0
+dalvik.vm.background-dex2oat-cpu-set u:object_r:system_mtk_dalvik_prop:s0
+
+# DMC control property
+ro.vendor.system.mtk_dmc_support  u:object_r:system_mtk_dmc_prop:s0
+ro.vendor.system.mtk_mapi_support u:object_r:system_mtk_dmc_prop:s0
+ro.vendor.system.mtk_mdmi_support u:object_r:system_mtk_dmc_prop:s0
+
+ro.mtk.ims.data.feature_support u:object_r:system_mtk_persist_ims_data_prop:s0

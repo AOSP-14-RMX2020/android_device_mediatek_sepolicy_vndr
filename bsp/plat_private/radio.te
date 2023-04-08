@@ -178,9 +178,70 @@ get_prop(radio, system_mtk_gwsd_prop)
 # Purpose : Allow radio to read fastdormancy property
 get_prop(radio, system_mtk_fd_prop)
 
+# Date: 2021/12/20
+# Purpose: Allow radio to read ro.vendor.vodata_support
+get_prop(radio, system_mtk_vodata_prop)
+
+# Date : 2021/11/09
+# Operation : R Migration
+# Purpose : allow radio to get radio power property
+get_prop(radio, system_mtk_power_off_md_prop)
+
 # Date : 2021/12/22
 # Purpose : Allow radio to read ims debug property
 get_prop(radio, system_mtk_dbg_ims_prop)
+
+allow radio proc_ccci_lp_mem:file r_file_perms;
+
+# Data : 2021/08/11
+# Operattion : DEBUG
+# Purpose : Allow process at radio domain get mediametrics_service from service_manager
+allow radio mediametrics_service:service_manager find;
+
+# Date : 2018/07/03
+# Purpose : Allow sim system to set prop
+set_prop(radio, system_mtk_sim_system_prop)
+
+# Operation : DEBUG
+# Purpose : Allow to use system_mtk_bgdata_disabled_prop
+get_prop(radio, system_mtk_bgdata_disabled_prop)
+
+# Date : 2018/11/02
+# Operation : Allow radio set system_mtk_persist_xcap_rawurl_prop
+# Purpose : for set telephony xcap use raw url property in IMS SS
+set_prop(radio, system_mtk_persist_xcap_rawurl_prop)
+
+# Date : 2021/09/06
+# Operation : Allow radio set system_mtk_rcs_single_reg_support_prop
+# Purpose : To use SIngle Registration property which will enable Google UCE flow in IMS and Presence
+set_prop(radio, system_mtk_rcs_single_reg_support_prop)
+
+# Date : W21.44
+# Purpose: Allow radio to access uce service
+allow radio uce_service:service_manager add;
+
+# Date : 2022/03/08
+# Operation : Migration
+# Purpose : Carrier express service on BSP
+allow radio mtk_carrierexpress_service:service_manager add;
+set_prop(radio, system_mtk_usp_srv_prop)
+set_prop(radio, system_mtk_persist_vendor_vzw_device_type_prop)
+set_prop(radio, system_mtk_rcs_support_prop)
+set_prop(radio, system_mtk_rtt_prop)
+set_prop(radio, system_mtk_clientapi_support_prop)
+
+# Date : 2022/05/30
+# Purpose : Allow radio to read video ss property
+get_prop(radio, system_mtk_dbg_video_ss_prop)
+
+# Date: 2022/07/20
+# Purpose: mtk ims data feature key
+# Package Name: com.android.phone
+get_prop(radio, system_mtk_persist_ims_data_prop)
+
+# Date : 2022/08/16
+# Purpose : Allow radio to set atci property
+set_prop(radio, system_mtk_atci_sys_prop)
 
 # Date : 2022/08/15
 # Purpose : Allow ims vt system to set prop

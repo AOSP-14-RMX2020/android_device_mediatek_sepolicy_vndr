@@ -62,7 +62,11 @@ system_internal_prop(system_mtk_gwsd_prop)
 system_internal_prop(system_mtk_vodata_prop)
 system_internal_prop(system_mtk_fd_prop)
 system_internal_prop(system_mtk_dbg_ims_prop)
+system_internal_prop(system_mtk_dbg_video_ss_prop)
 system_internal_prop(system_mtk_ims_vt_signalstrength_prop)
+system_internal_prop(system_mtk_dmc_prop)
+system_internal_prop(system_mtk_persist_ims_data_prop)
+system_internal_prop(system_mtk_dalvik_prop)
 
 # Properties which can be written only by vendor_init
 system_vendor_config_prop(system_mtk_graphics_sf_gll_ro_prop)
@@ -125,4 +129,8 @@ typeattribute system_mtk_gwsd_prop                           extended_core_prope
 typeattribute system_mtk_vodata_prop                         extended_core_property_type;
 typeattribute system_mtk_fd_prop                             extended_core_property_type;
 typeattribute system_mtk_dbg_ims_prop                        extended_core_property_type;
+typeattribute system_mtk_dbg_video_ss_prop                   extended_core_property_type;
 typeattribute system_mtk_ims_vt_signalstrength_prop          extended_core_property_type;
+typeattribute system_mtk_dmc_prop                            extended_core_property_type;
+typeattribute system_mtk_persist_ims_data_prop               extended_core_property_type;
+typeattribute system_mtk_dalvik_prop                         extended_core_property_type;
