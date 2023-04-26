@@ -1,2 +1,6 @@
 genfscon debugfs /mali0/gpu_memory   u:object_r:debugfs_gpu_mali:s0
 genfscon debugfs /mali/gpu_memory    u:object_r:debugfs_gpu_mali:s0
+
+# Performance
+genfscon proc /sys/kernel/sched_stune_task_threshold  u:object_r:proc_sched:s0
+genfscon proc /sys/vm/dirty_writeback_centisecs       u:object_r:proc_sched:s0
