@@ -31,7 +31,6 @@ vendor_internal_prop(wfd_sys_debug_prop)
 vendor_internal_prop(vendor_tee_listener_prop)
 vendor_internal_prop(vendor_system_prop)
 vendor_internal_prop(vendor_dpliner_prop)
-vendor_internal_prop(thermal_engine_prop)
 vendor_internal_prop(factor_prop)
 
 # Properties which can't be written outside vendor
