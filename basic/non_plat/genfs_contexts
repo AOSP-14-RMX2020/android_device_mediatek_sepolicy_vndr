@@ -323,10 +323,6 @@ genfscon sysfs /devices/platform/leds-mt65xx/leds                              u
 genfscon sysfs /devices/platform/pwmleds/leds                                  u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/disp_leds/leds                                u:object_r:sysfs_leds:s0
 
-genfscon sysfs /devices/platform/11f00000.i2c6/i2c-6/6-0011/leds/lcd-backlight                 u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11017000.i2c/i2c-5/5-0034/mt6370_pmu_rgbled/leds			         u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight                                u:object_r:sysfs_leds:s0
-
 # Date : 2018/11/22
 # Purpose: allow mdlogger to read mdinfo file
 genfscon sysfs /kernel/md/mdee u:object_r:sysfs_mdinfo:s0
@@ -584,15 +580,12 @@ genfscon sysfs /power/clk_buf/ u:object_r:sysfs_dcxo:s0
 genfscon proc /apusys_logger/seq_logl u:object_r:proc_apusys_up_seq_logl:s0
 
 # labeling sysfs wakeup files to avoid sepolicy violation
-genfscon sysfs /devices/platform/10238000.gce/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/15004000.ispsys/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6397-rtc/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-004e/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt635x-auxadc/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-charger-type-detection/power_supply/mtk_charger_type/wakeup u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/wakeup                                                u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt635x-auxadc/wakeup                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-gauge/power_supply/battery/wakeup                           u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-gauge/power_supply/mtk-gauge/wakeup                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt635x-auxadc/wakeup/wakeup                                        u:object_r:sysfs_wakeup:s0
@@ -911,26 +904,3 @@ genfscon sysfs /devices/platform/battery_bq/power_supply/battery/wakeup26       
 
 # Purpose: rules for nvm to check eFuse segment
 genfscon sysfs /devices/platform/11f10000.efuse/mtk-devinfo0/nvmem                              u:object_r:sysfs_nvmem:s0
-
-#6360leds-6785
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue/brightness u:object_r:sysfs_leds:s0
-#6360leds-6853
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/blue/trigger u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/red/trigger u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11d00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds/green/trigger u:object_r:sysfs_leds:s0
-#6370leds-6781
-
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/red/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/green/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/blue/brightness u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/blue/trigger u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/red/trigger u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6370_pmu_rgbled/leds/green/trigger u:object_r:sysfs_leds:s0
