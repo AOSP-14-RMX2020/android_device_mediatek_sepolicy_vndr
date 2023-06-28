@@ -783,7 +783,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.nxp\.hardware\.nfc@1\.1-service		                  u:object_r:vendor_hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/mfp-daemon                                                   u:object_r:hal_fingerprint_default_exec:s0
 
-/(vendor|system/vendor)/bin/xcap		               u:object_r:xcap_exec:s0
 /(vendor|system/vendor)/bin/ccci_fsd         u:object_r:ccci_fsd_exec:s0
 
 # Google Trusty system files
